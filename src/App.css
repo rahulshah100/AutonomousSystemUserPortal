@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+/* For header component */
+.headerLink:hover{
+  opacity: 0.5;
+}
+
+.headerLink:active{
+  opacity: 0.3;
+}
+
+.footerLink:hover{
+  opacity: 0.6;
+}
+
+.footerLink:active{
+  opacity: 0.4;
+}
