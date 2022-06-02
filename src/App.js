@@ -1,8 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
-import Header from './Components/Header';
-import Footer from './Components/Footer';
-import Content from './Components/Content';
+import Controller from './Components/Controller';
+import HomePage from './Components/HomePage';
+import PageNotFound from './Components/PageNotFound';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,13 +14,11 @@ import {
 function App() {
   return (
     <Router>
-      <Header/>
-
       <Routes>
-          <Route exact path="/" element={<Content/>}/>
-        </Routes>
-      
-      <Footer/>
+        <Route exact path='/' element={<HomePage />} />
+        <Route exact path='/Controller' element={<Controller />} />
+        <Route path='*' element={<PageNotFound/>}/>
+      </Routes>
     </Router>
   );
 }

@@ -1,43 +1,18 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getFirestore } from "@firebase/firestore";
+import './FireBaseConnection';
 
-export default function Header() {
-    function firebase() {
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-
-        // Your web app's Firebase configuration
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-        const firebaseConfig = {
-            apiKey: "AIzaSyCQaHHxTgeFcKZfGl5j7J7cJP8gnBkE38A",
-            authDomain: "autonomousvehicle-85c40.firebaseapp.com",
-            projectId: "autonomousvehicle-85c40",
-            storageBucket: "autonomousvehicle-85c40.appspot.com",
-            messagingSenderId: "210830048668",
-            appId: "1:210830048668:web:6bba87367d610b7e0b9c59",
-            measurementId: "G-GLGQT70T02"
-        };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-        const firestore = getFirestore(app);
-    }
-
+export default function Header() {    
     let bringNotifs = () => {
-        firebase()
+        // firebase()
     }
 
     return (
         <nav className="navbar navbar-expand-lg bg-dark" style={{ padding: 10, borderBottomLeftRadius: 18, borderBottomRightRadius: 18, zoom: 1.25 }}>
 
             {/* Notifications */}
-            <div className="alert alert-success alert-dismissible fade show" role="alert" style={{ position: 'absolute', top: 66, backgroundColor: 'white', border: '2px solid rgba(240, 100, 73)', fontSize: 13, width: '99.9%', left: 0.7, display: 'flex', flexDirection: 'row', paddingTop: 12, paddingBottom: 0, paddingLeft: 10, boxShadow:'-10px 1px 30px black', color:'black', fontFamily:'Arial'}}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-bell" viewBox="0 0 16 16" style={{ marginLeft: 6, marginRight: 10, marginTop: 2, color: 'black', borderRadius:6 }}>
+            <div className="alert alert-success alert-dismissible fade show" role="alert" style={{ position: 'absolute', top: 66, backgroundColor: 'white', border: '2px solid rgba(240, 100, 73)', fontSize: 13, width: '50%', left: '25%', display: 'flex', flexDirection: 'row', paddingTop: 12, paddingBottom: 0, paddingLeft: 10, boxShadow:'-10px 1px 30px black', color:'black', fontFamily:'Arial'}}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-bell" viewBox="0 0 16 16" style={{ marginLeft: 6, marginRight: 14, marginTop: 2, color: 'black', borderRadius:6 }}>
                     <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
                 </svg>
                     <img src="https://d1vg9wkrun3t3k.cloudfront.net/users/5edb2893-05a4-44db-a779-b6d26b6657e7/forever_files/e75be267-cfb1-44f8-b992-f144f776715c/original.png?format=jpg&width=155&height=151&quality=85" alt="notificationIcon" style={{height:30, position:'absolute', top:6, left:6}}/>
