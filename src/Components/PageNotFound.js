@@ -5,9 +5,11 @@ import Header from './Header'
 export default function PageNotFound() {
   return (
     <div>
-      <Header/>
-      <h2 style={{minHeight:'39.5vw', textAlign:'center'}}>This Page does not exist.</h2>
-      <Footer/>
+      <Header />
+      <div style={{ minHeight: '40.2vw'}}>
+        <h1>Oops! <span>This Page does not exist.</span> </h1>        
+      </div>
+      <Footer />
     </div>
   )
 }
