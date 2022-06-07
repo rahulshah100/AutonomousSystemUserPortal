@@ -19,10 +19,15 @@ export default function Controller() {
             a = a.mapValue.fields.NotifContent.stringValue;
             // converting a fetched string into an object. 
             a = eval(a)
-            setNotifContent([...a])
+            setNotifContent(currentState => [...a])
         };
         getNotifContent();
+        localStorage.setItem('NotifContent', JSON.stringify(NotifContent))
     }, []);
+
+    useEffect(() => {
+        localStorage.setItem('NotifContent', JSON.stringify(NotifContent))
+    }, [NotifContent]);
 
     function ShowNotifOnUserScreen(id) {
         console.log("Show", id)
@@ -30,12 +35,18 @@ export default function Controller() {
 
     const DelNotification = async (SrNum) => {
         let confirmDel = window.confirm('Are you sure you want to delete this Notification?');
+
         if (confirmDel == true) {
             setNotifContent(NotifContent.filter((e) => {
                 return e["SrNum"] !== SrNum
-            })) 
+            }))
         }
-        await updateDoc(doc(db, "Notifs", 'Bldcpia0cF0lbMjHG5ji'), { NotifContent: JSON.stringify(NotifContent)})
+
+        setTimeout(()=>{
+        let AlteredNotifContent=localStorage.NotifContent
+        // console.log(AlteredNotifContent)
+        updateDoc(doc(db, "Notifs", 'Bldcpia0cF0lbMjHG5ji'), { 'NotifContent': AlteredNotifContent })}
+        , 1000)
     }
 
     const AddNotification = async (SrNum) => {
@@ -57,9 +68,11 @@ export default function Controller() {
 
         alert(`New Alert Added Successfully`)
 
-        console.log(NotifContent, JSON.stringify(NotifContent))
-
-        await updateDoc(doc(db, "Notifs", 'Bldcpia0cF0lbMjHG5ji'), { NotifContent: JSON.stringify(NotifContent) })
+        setTimeout(()=>{
+            let AlteredNotifContent=localStorage.NotifContent
+            // console.log(AlteredNotifContent)
+            updateDoc(doc(db, "Notifs", 'Bldcpia0cF0lbMjHG5ji'), { 'NotifContent': AlteredNotifContent })}
+            , 1000)
     }
 
     return (
