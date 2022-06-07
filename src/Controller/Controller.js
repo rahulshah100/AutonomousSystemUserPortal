@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { db } from "./FireBaseConnection";
+import { db } from "../FireBaseConnection/FireBaseConnection";
 import { collection, doc, getDocs, updateDoc } from "firebase/firestore";
 
 export default function Controller() {
