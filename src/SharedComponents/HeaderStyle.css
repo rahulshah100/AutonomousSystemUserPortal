@@ -1,0 +1,7 @@
+.NotifHide{
+    display: none !important;
+}
+
+.NotifShow{
+    display: block !important;
+}

@@ -52,7 +52,7 @@ export default function Controller() {
                 return
             }
         });
-        
+
         alert(`Alert Shown Successfully- ${showedElem.Title}`)
 
         // Pushing back the changed NotifHistory to firebase
@@ -109,6 +109,15 @@ export default function Controller() {
     }
 
 
+    const clearNotifHistory = async () => {
+        let confirmClear = window.confirm("Do you want to Clear entire Notification History?")
+
+        if (confirmClear) {
+            updateDoc(doc(db, "Notifs", 'Bldcpia0cF0lbMjHG5ji'), { 'NotifHistory': JSON.stringify([]) })
+        }
+    }
+
+
     return (
         <div style={{ margin: '20px 30px' }} onLoad={() => { document.title = "Notification Controller"; }}>
             <h2>Click on <button type="button" className="btn btn-warning" style={{ zoom: 0.7 }}><b> Show</b></button> to make that Notification Pop up on User's Screen.</h2><hr />
@@ -147,6 +156,10 @@ export default function Controller() {
                     </span>
                 </div>
             </form>
+
+            <br /><h2>Clear Notification History 
+                <button type="button" title="Clears the entire Notification History" className="btn btn-primary" style={{ marginLeft:10, zoom: 0.9 }} onClick={() => { clearNotifHistory() }}> Clear</button>
+                </h2>
         </div>
     )
 }
