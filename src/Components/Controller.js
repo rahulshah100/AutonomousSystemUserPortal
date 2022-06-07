@@ -12,6 +12,7 @@ export default function Controller() {
     const [NotifContent, setNotifContent] = useState([]);
     const NotifContent_CollectionRef = collection(db, "Notifs");
 
+    // Initializing setState Variables by fetching values from firebase
     useEffect(() => {
         const getNotifContent = async () => {
             const data = await getDocs(NotifContent_CollectionRef);
@@ -25,13 +26,44 @@ export default function Controller() {
         localStorage.setItem('NotifContent', JSON.stringify(NotifContent))
     }, []);
 
+    // As NotifContent Changes, we can catch that and store it in localStorage.
     useEffect(() => {
         localStorage.setItem('NotifContent', JSON.stringify(NotifContent))
     }, [NotifContent]);
 
-    function ShowNotifOnUserScreen(id) {
-        console.log("Show", id)
+
+    const ShowNotifOnUserScreen = async (id) => {
+        // console.log("Show", id)
+
+        // Changing the NotifAdded value to true in firebase
+        updateDoc(doc(db, "Notifs", 'Bldcpia0cF0lbMjHG5ji'), { 'NotifAdded': true })
+
+        // Fetching NotifHistory from firebase
+        let data = await getDocs(NotifContent_CollectionRef);
+        let a = data.docs[0]._document.data.value;
+        a = a.mapValue.fields.NotifHistory.stringValue;
+        a = eval(a)
+
+        // Getting Value of Notification on which Show was clicked
+        let showedElem;
+        (eval(localStorage.NotifContent)).forEach((element, index) => {
+            if (element.SrNum == id) {
+                showedElem = element
+                return
+            }
+        });
+        
+        alert(`Alert Shown Successfully- ${showedElem.Title}`)
+
+        // Pushing back the changed NotifHistory to firebase
+        a = [...a, showedElem]
+        // if more than 15 notifications gather in history then consider the last 15 items for history.
+        if (a.length > 15) {
+            a = a.slice(-15)
+        }
+        updateDoc(doc(db, "Notifs", 'Bldcpia0cF0lbMjHG5ji'), { 'NotifHistory': JSON.stringify(a) })
     }
+
 
     const DelNotification = async (SrNum) => {
         let confirmDel = window.confirm('Are you sure you want to delete this Notification?');
@@ -42,12 +74,13 @@ export default function Controller() {
             }))
         }
 
-        setTimeout(()=>{
-        let AlteredNotifContent=localStorage.NotifContent
-        // console.log(AlteredNotifContent)
-        updateDoc(doc(db, "Notifs", 'Bldcpia0cF0lbMjHG5ji'), { 'NotifContent': AlteredNotifContent })}
-        , 1000)
+        setTimeout(() => {
+            let AlteredNotifContent = localStorage.NotifContent
+            // console.log(AlteredNotifContent)
+            updateDoc(doc(db, "Notifs", 'Bldcpia0cF0lbMjHG5ji'), { 'NotifContent': AlteredNotifContent })
+        }, 1000)
     }
+
 
     const AddNotification = async (SrNum) => {
         let NewNotifSrNum;
@@ -68,12 +101,13 @@ export default function Controller() {
 
         alert(`New Alert Added Successfully`)
 
-        setTimeout(()=>{
-            let AlteredNotifContent=localStorage.NotifContent
+        setTimeout(() => {
+            let AlteredNotifContent = localStorage.NotifContent
             // console.log(AlteredNotifContent)
-            updateDoc(doc(db, "Notifs", 'Bldcpia0cF0lbMjHG5ji'), { 'NotifContent': AlteredNotifContent })}
-            , 1000)
+            updateDoc(doc(db, "Notifs", 'Bldcpia0cF0lbMjHG5ji'), { 'NotifContent': AlteredNotifContent })
+        }, 1000)
     }
+
 
     return (
         <div style={{ margin: '20px 30px' }} onLoad={() => { document.title = "Notification Controller"; }}>
