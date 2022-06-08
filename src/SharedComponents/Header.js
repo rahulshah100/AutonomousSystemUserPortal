@@ -9,38 +9,44 @@ export default function Header() {
     const [NotifToBeShown, setNotifToBeShown] = useState([]);
     const NotifAdded_CollectionRef = collection(db, "Notifs");
 
+    // For Speech
+    const msg = new SpeechSynthesisUtterance()
+
+    useEffect(() => {
+        // if (NotifToBeShown["Title"]) {
+        msg.text = JSON.stringify(NotifToBeShown["Title"])
+        window.speechSynthesis.speak(msg)
+        // }
+    }, [msg, NotifToBeShown])
+
     useEffect(() => {
         setInterval(() => {
             const getNotifAdded = async () => {
                 let data = await getDocs(NotifAdded_CollectionRef);
-                
+
                 let a = data.docs[0]._document.data.value;
                 a = a.mapValue.fields.NotifAdded.booleanValue;
-                console.log('1a',a)
 
-                if (a == true) {                    
-                    setTimeout(() => {
-                        let a2 = data.docs[0]._document.data.value;
-                        a2 = a2.mapValue.fields.NotifHistory.stringValue;
-                        console.log('1a2',a2)
-                        a2 = (eval(a2)).at(-1)
-                        console.log('2a2',a2)
-                        setNotifToBeShown(a2)
+                if (a == true) {
+                    let a2 = data.docs[0]._document.data.value;
+                    a2 = a2.mapValue.fields.NotifHistory.stringValue;
+                    a2 = (eval(a2)).at(-1)
+                    console.log('a2', a2)
+                    setNotifToBeShown(a2);
 
-                        openNotif()
-                    }, 1000)
+                    console.log('localSt', JSON.parse(localStorage.getItem("NotifToBeShown")))
+                    openNotif()
 
                     updateDoc(doc(db, "Notifs", 'Bldcpia0cF0lbMjHG5ji'), { 'NotifAdded': false })
                 }
             };
             getNotifAdded();
         }, 1000)
-    }, []);
+    }, [NotifToBeShown]);
 
     useEffect(() => {
         console.log(NotifToBeShown["Title"], typeof NotifToBeShown)
-    }
-        , [NotifToBeShown]);
+    }, [NotifToBeShown]);
 
     function closeNotif() {
         document.getElementById('NotificationDIV').classList.remove('NotifShow')

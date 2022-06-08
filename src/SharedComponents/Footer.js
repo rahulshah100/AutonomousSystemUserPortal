@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 export default function Footer(props) {
-  setTimeout( () => {
+  setTimeout(async () => {
     let allSrc = Array.from(document.getElementsByClassName('FooterImage'))
 
     // console.log(allSrc)
@@ -29,13 +29,14 @@ export default function Footer(props) {
       allSrc[props.active - 1].style.top = '8px'
       allSrc[props.active - 1].style.height = '39px'
     }
-    else {
+    else if (props.active == 4){
       allSrc[props.active - 1].src = "https://i.ibb.co/ctL0rsj/Screenshot-19-1.png"
       allSrc[props.active - 1].style.zoom = '1.7'
       allSrc[props.active - 1].style.width = '25px'
       allSrc[props.active - 1].style.top = '6.8px'
       allSrc[props.active - 1].style.right = '20.1%'
     }
+    else{}
   })
 
   return (
