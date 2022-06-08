@@ -35,9 +35,6 @@ export default function Controller() {
     const ShowNotifOnUserScreen = async (id) => {
         // console.log("Show", id)
 
-        // Changing the NotifAdded value to true in firebase
-        updateDoc(doc(db, "Notifs", 'Bldcpia0cF0lbMjHG5ji'), { 'NotifAdded': true })
-
         // Fetching NotifHistory from firebase
         let data = await getDocs(NotifContent_CollectionRef);
         let a = data.docs[0]._document.data.value;
@@ -62,6 +59,9 @@ export default function Controller() {
             a = a.slice(-15)
         }
         updateDoc(doc(db, "Notifs", 'Bldcpia0cF0lbMjHG5ji'), { 'NotifHistory': JSON.stringify(a) })
+        
+        // Changing the NotifAdded value to true in firebase
+        updateDoc(doc(db, "Notifs", 'Bldcpia0cF0lbMjHG5ji'), { 'NotifAdded': true })
     }
 
 

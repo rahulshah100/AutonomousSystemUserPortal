@@ -5,7 +5,7 @@ export default function Footer(props) {
   setTimeout( () => {
     let allSrc = Array.from(document.getElementsByClassName('FooterImage'))
 
-    console.log(allSrc)
+    // console.log(allSrc)
 
     if (props.active == 1) {
       allSrc[props.active - 1].src = "https://i.ibb.co/Ld3b6Zz/Screenshot-18.png"
