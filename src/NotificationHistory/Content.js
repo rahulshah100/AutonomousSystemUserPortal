@@ -28,9 +28,9 @@ export default function Content() {
             getNotifHistory();
         }, 1000)
     }, []);
-    console.log(NotifHistory)
+
     return (
-        <div style={{ minHeight: '40vw', width: '100%', justifyContent: 'center', alignItems: 'center', padding: 15 }}>
+        <div style={{ height: '40.2vw', width: '100%', justifyContent: 'center', alignItems: 'center', padding: 15, overflow : 'auto'}}>
             <div style={{ margin: '0px auto' }}>
                 <h2 style={{ textAlign: 'center' }}>Notification History- <span style={{ fontSize: '23px' }}> The last 15 Notifications (Latest Shown First) :</span> </h2><hr />
 

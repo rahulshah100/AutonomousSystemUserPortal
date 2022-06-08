@@ -4,7 +4,7 @@ import RightPanel from './RightPanel';
 
 export default function Header() {
     return (
-        <div style={{ minHeight: '40vw', padding: 20, display: 'flex', flexDirection: 'row' }} >
+        <div style={{ height: '40.2vw', padding: 20, display: 'flex', flexDirection: 'row', overflow: 'auto' }} >
             <div className='leftsidePanel' style={{ minWidth: '65%' }}>
                 <LeftPanel />
             </div>

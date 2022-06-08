@@ -5,14 +5,14 @@ import Footer from '../SharedComponents/Footer'
 
 export default function HomePage() {
   function componentDidMount() {
-    document.title = "Home Page"
+    document.title = "Home"
   }
 
   return (
     <div onLoad={componentDidMount()}>
       <Header />
       <Content />
-      <Footer />
+      <Footer active="1"/>
     </div>
   )
 }
