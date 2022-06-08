@@ -120,7 +120,7 @@ export default function Controller() {
 
     return (
         <div style={{ margin: '20px 30px' }} onLoad={() => { document.title = "Notification Controller"; }}>
-            <h2>Click on <button type="button" className="btn btn-warning" style={{ zoom: 0.7 }}><b> Show</b></button> to make that Notification Pop up on User's Screen.</h2><hr />
+            <hr /><h2>Click on <button type="button" className="btn btn-warning" style={{ zoom: 0.7 }}><b> Show</b></button> to make that Notification Pop up on User's Screen.</h2><hr />
 
             <div className="list-notifs" style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
                 {NotifContent.length === 0 ? 'No Notifications' :
@@ -140,7 +140,7 @@ export default function Controller() {
                     })}
             </div>
 
-            <br /><h2>Add a New Notification</h2><hr />
+            <br /><hr /><h2>Add a New Notification</h2><hr />
             <form onSubmit={(e) => { e.preventDefault(); AddNotification() }}>
                 <div className="alert alert-success alert-dismissible fade show" role="alert" style={{ backgroundColor: 'white', border: '2px solid rgba(240, 100, 73)', fontSize: 13, width: '50%', display: 'flex', flexDirection: 'row', paddingTop: 10, paddingBottom: 0, paddingRight: 0, paddingLeft: 10, color: 'black', fontFamily: 'Arial', marginBottom: 40 }}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-bell" viewBox="0 0 16 16" style={{ marginLeft: 6, marginRight: 14, marginTop: 2, color: 'black', borderRadius: 6 }}>
@@ -155,11 +155,14 @@ export default function Controller() {
                         <button type="submit" title="Add this Notification" className="btn btn-success" style={{ border: '1px solid black', zoom: 0.8, float: 'right', position: 'relative', top: 30, left: 40 }}>Add</button>
                     </span>
                 </div>
-            </form>
+            </form><br />
 
-            <br /><h2>Clear Notification History 
-                <button type="button" title="Clears the entire Notification History" className="btn btn-primary" style={{ marginLeft:10, zoom: 0.9 }} onClick={() => { clearNotifHistory() }}> Clear</button>
-                </h2>
+
+            <hr />
+            <h2>Clear Notification History
+                <button type="button" title="Clears the entire Notification History" className="btn btn-primary" style={{ marginLeft: 10, zoom: 0.9 }} onClick={() => { clearNotifHistory() }}> Clear</button>
+            </h2>
+            <hr />
         </div>
     )
 }

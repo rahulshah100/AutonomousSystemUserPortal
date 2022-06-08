@@ -76,7 +76,7 @@ export default function Header() {
                             </Link>
                         </li>
                         <li className="nav-item headerLink">
-                            <Link className="nav-link" to="#">
+                            <Link alt='Notifications' title='Notifications' className="nav-link" to="/NotificationHistory">
                                 <img src='https://i.ibb.co/xjDhpvL/Screenshot-6.jpg' style={{ width: 45, height: 45, position: 'absolute', top: 1, left: 49, zoom: 1.3 }} />
                             </Link>
                         </li>

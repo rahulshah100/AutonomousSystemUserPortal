@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { db } from "../FireBaseConnection/FireBaseConnection";
 import { collection, getDocs } from "firebase/firestore";
+import * as ReactBootstrap from 'react-bootstrap';
 
 export default function Content() {
     let count = 0
@@ -8,6 +9,8 @@ export default function Content() {
     // Fetching Data from Firebase
     const [NotifHistory, setNotifHistory] = useState([]);
     const NotifHistory_CollectionRef = collection(db, "Notifs");
+
+    const [Loading, setLoading] = useState(true);
 
     // Initializing setState Variables by fetching values from firebase
     useEffect(() => {
@@ -20,18 +23,20 @@ export default function Content() {
                 a = eval(a)
                 a = a.reverse()
                 setNotifHistory(currentState => [...a])
+                setLoading(false)
             };
             getNotifHistory();
         }, 1000)
     }, []);
-
+    console.log(NotifHistory)
     return (
         <div style={{ minHeight: '40vw', width: '100%', justifyContent: 'center', alignItems: 'center', padding: 15 }}>
             <div style={{ margin: '0px auto' }}>
-                <h2 style={{ textAlign: 'center' }}>Notification History- <span style={{ fontSize: '23px' }}> The last 15 Notifications are as follows (From Latest)* :</span> </h2><hr />
+                <h2 style={{ textAlign: 'center' }}>Notification History- <span style={{ fontSize: '23px' }}> The last 15 Notifications (Latest Shown First) :</span> </h2><hr />
 
+                {Loading ? <div style={{textAlign: 'center'}}><ReactBootstrap.Spinner animation='border' /></div> : ''}
                 <div className="list-notifs">
-                    {NotifHistory.length === 0 ? 'No Notifications' :
+                    {NotifHistory && NotifHistory.length === 0 && Loading==false ? <div style={{textAlign: 'center'}}>No Notifications</div> :
                         NotifHistory.map((notif) => {
                             return <div key={count += 1} className="alert alert-success alert-dismissible fade show" role="alert" style={{ backgroundColor: 'white', border: '2px solid rgba(240, 100, 73)', fontSize: 13, width: '50%', display: 'flex', flexDirection: 'row', paddingTop: 10, paddingBottom: 0, paddingRight: 12, paddingLeft: 10, color: 'black', fontFamily: 'Arial', marginRight: 25, marginBottom: 35, flexBasis: '50%', marginLeft: '25%' }}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-bell" viewBox="0 0 16 16" style={{ marginLeft: 6, marginRight: 24, marginTop: 2, color: 'black', borderRadius: 6 }}>
