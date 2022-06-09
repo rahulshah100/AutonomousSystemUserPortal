@@ -40,7 +40,7 @@ export default function Footer(props) {
   })
 
   return (
-    <nav className="navbar navbar-expand-lg" style={{ padding: 10, borderTopLeftRadius: 20, borderTopRightRadius: 20, backgroundColor: 'white' }}>
+    <nav className="navbar navbar-expand-lg" style={{ padding: 10, borderTopLeftRadius: 20, borderTopRightRadius: 20, backgroundColor: 'white', overflow: 'hidden' }}>
       <div className="container-fluid">
         <ul className="navbar-nav me-auto mb-2 mb-lg-0" style={{ minWidth: '80%' }}>
           <li className="nav-item footerLink" style={{ minWidth: 20, minHeight: 40 }}>

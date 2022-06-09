@@ -83,7 +83,8 @@ export default function Header() {
 
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0" style={{ minWidth: '80%' }}>
                         <li className="nav-item headerLink" style={{ backgroundColor: 'rgba(240, 100, 73)', minWidth: 20, minHeight: 40 }}>
-                            <Link className="nav-link" aria-current="page" to="#" > <img src='https://i.ibb.co/X34P8MJ/Screenshot-2-1.jpg' style={{ width: 45, height: 45, position: 'absolute', top: -0.3, left: -1.4, zoom: 1.35, borderBottomLeftRadius: 14 }} />
+                            <Link className="nav-link" aria-current="page" to="#" > 
+                                <img src='https://i.ibb.co/X34P8MJ/Screenshot-2-1.jpg' style={{ width: 45, height: 45, position: 'absolute', top: -0.3, left: -1.4, zoom: 1.35, borderBottomLeftRadius: 14 }} />
                                 <img src='https://i.ibb.co/LDFJngP/Screenshot-2.jpg' style={{ width: 45, height: 45, position: 'absolute', top: 8, left: 7, zoom: 0.9, borderBottomLeftRadius: 16 }} />
                             </Link>
                         </li>

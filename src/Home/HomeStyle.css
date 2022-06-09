@@ -1,0 +1,65 @@
+.container {
+    padding-top: 2.6%;
+    padding-left: 3%;
+    max-width: 100%;
+    max-height: 100%;
+    display: grid;
+    grid-template-columns: 42.8% 50.7%;
+    grid-template-rows: 95%;
+    column-gap: 3%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.item1 {
+    margin-top: 2%;
+    border: 3px solid rgb(2, 91, 130);
+    display: grid;
+}
+
+
+
+.item2 {
+    margin-top: 0%;
+    padding-top: 0%;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 10% 90%;
+}
+
+.QuickAccess {
+    float: left;
+    font-size: 23px;
+    color: rgb(2, 91, 130);
+}
+
+.SeeMore {
+    float: right;
+    font-size: 16px;
+    color: rgb(255, 64, 0) !important;
+}
+
+.Cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 3%;
+    column-gap: 2.5%;
+}
+
+.Card {
+    border: 2px solid rgb(2, 91, 130);
+    border-radius: 15px;
+    background-color: white;
+    display: grid;
+    grid-template-rows: 65% 35%;
+    color: rgb(2, 91, 130);
+    text-align: center;
+    font-size: 23px;
+    padding-top: 5px;
+    padding-bottom: 15px;
+}
+
+.CardText {
+    margin-top: 8%;
+    margin-left: 30%;
+    margin-right: 30%;
+}
