@@ -58,6 +58,17 @@ export default function Header() {
         document.getElementById('NotificationDIV').classList += ' NotifShow'
     }
 
+    function record() {
+        var recognition = new window.webkitSpeechRecognition();
+        recognition.lang = "en-GB";
+
+        recognition.onresult = function (event) {
+            document.getElementById('SearchBar').value = event.results[0][0].transcript;
+        }
+
+        recognition.start();
+    }
+
     return (
         <nav className="navbar navbar-expand-lg bg-dark" style={{ padding: 10, borderBottomLeftRadius: 18, borderBottomRightRadius: 18, zoom: 1.25 }}>
 
@@ -81,9 +92,9 @@ export default function Header() {
 
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
 
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0" style={{ minWidth: '80%' }}>
+                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item headerLink" style={{ backgroundColor: 'rgba(240, 100, 73)', minWidth: 20, minHeight: 40 }}>
-                            <Link className="nav-link" aria-current="page" to="#" > 
+                            <Link className="nav-link" aria-current="page" to="#" >
                                 <img src='https://i.ibb.co/X34P8MJ/Screenshot-2-1.jpg' style={{ width: 45, height: 45, position: 'absolute', top: -0.3, left: -1.4, zoom: 1.35, borderBottomLeftRadius: 14 }} />
                                 <img src='https://i.ibb.co/LDFJngP/Screenshot-2.jpg' style={{ width: 45, height: 45, position: 'absolute', top: 8, left: 7, zoom: 0.9, borderBottomLeftRadius: 16 }} />
                             </Link>
@@ -107,12 +118,9 @@ export default function Header() {
 
                     <form className="d-flex" role="search" onSubmit={(e) => { e.preventDefault() }}>
                         <div className="input-group">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16" style={{ color: 'white', zoom: 1.25, position: 'absolute', zIndex: 1, color: 'black', top: 7.5, left: -55, opacity: 0.4 }}>
-                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                            </svg>
-                            <input type="text" className="form-control" placeholder="" aria-label="Input group example" aria-describedby="basic-addon1" style={{ marginRight: 3, borderRadius: 3, marginLeft: -80 }} />
+                            <input type="text" id="SearchBar" className="form-control" placeholder="" aria-label="Input group example" aria-describedby="basic-addon1" style={{ paddingLeft: '40px', marginRight: 3, borderRadius: 3 }} />
                         </div>
-                        <button className="btn headerLink mic" type="submit" style={{ backgroundColor: 'rgba(240, 100, 73)', color: "white", width: 50, marginRight: 70 }}>
+                        <button className="btn headerLink mic" type="submit" style={{ backgroundColor: 'rgba(240, 100, 73)', color: "white", width: 50, marginRight: 70 }} onClick={() => record()}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" name="bi bi-mic-fill" viewBox="0 0 16 16" style={{ zoom: 1.3 }}>
                                 <path d="M5 3a3 3 0 0 1 6 0v5a3 3 0 0 1-6 0V3z" />
                                 <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z" />
