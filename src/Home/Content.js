@@ -9,10 +9,11 @@ export default function Header() {
         // document.querySelector('video').playbackRate = 5;
         // msg.text = 'okokokokokokokookokokokok'
         // window.speechSynthesis.speak(msg)
+        // document.getElementsByTagName('audio')[0].volume = 0.25;
     }
 
     return (
-        <div className="container" style={{ height: '40.2vw' }} onLoad={() => videoControls()}>
+        <div className="containerHomePage" style={{ height: '40.2vw' }} onLoad={() => videoControls()}>
             <div className='item1' style={{ textAlign: 'center', background: 'black', padding: 0 }}>
                 <div className='MapVid'>
                     <video style={{ width: 530 }} autoPlay={true} muted={true}>

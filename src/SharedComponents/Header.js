@@ -13,10 +13,15 @@ export default function Header() {
     const msg = new SpeechSynthesisUtterance()
 
     useEffect(() => {
-        // if (NotifToBeShown["Title"]) {
-        msg.text = JSON.stringify(NotifToBeShown["Title"])
-        window.speechSynthesis.speak(msg)
-        // }
+        // console.log('\n msg.text, msg.text!=undefined:', msg.text, msg.text!=undefined)
+        // console.log('NotifToBeShown["Title"]', NotifToBeShown["Title"])
+        // console.log('outside')
+        if (msg.text != undefined && NotifToBeShown["Title"]) {
+            // console.log("inside")
+            msg.text = JSON.stringify(NotifToBeShown["Title"])
+            // console.log('msg-', msg.text)
+            window.speechSynthesis.speak(msg)
+        }
     }, [msg, NotifToBeShown])
 
     useEffect(() => {
@@ -31,10 +36,10 @@ export default function Header() {
                     let a2 = data.docs[0]._document.data.value;
                     a2 = a2.mapValue.fields.NotifHistory.stringValue;
                     a2 = (eval(a2)).at(-1)
-                    console.log('a2', a2)
+                    // console.log('a2', a2)
                     setNotifToBeShown(a2);
 
-                    console.log('localSt', JSON.parse(localStorage.getItem("NotifToBeShown")))
+                    // console.log('localSt', JSON.parse(localStorage.getItem("NotifToBeShown")))
                     openNotif()
 
                     updateDoc(doc(db, "Notifs", 'Bldcpia0cF0lbMjHG5ji'), { 'NotifAdded': false })

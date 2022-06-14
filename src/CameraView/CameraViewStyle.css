@@ -1,0 +1,57 @@
+.containerCam {
+    padding-top: 2.6%;
+    padding-left: 3%;
+    max-width: 100%;
+    max-height: 100%;
+    display: grid;
+    grid-template-columns: 23.8% 69%;
+    grid-template-rows: 95%;
+    column-gap: 3%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.containerCam .item1 {
+    vertical-align: middle !important;
+    text-align: center;
+    margin-top: 35%;
+    font-size: 18px;
+}
+
+.containerCam .Viewbtn {
+    cursor: pointer;
+    background-color: rgb(240, 100, 73);
+    border: 3px solid rgb(240, 100, 73);
+    color: white;
+    vertical-align: middle;
+    padding: 14px;
+    border-radius: 20px;
+    margin-bottom: 10%;
+}
+
+.containerCam .Viewbtn:hover {
+    font-size: 19px;
+    background-color: rgb(230, 90, 70);
+}
+
+.containerCam .Viewbtn:active {
+    background-color: rgb(240, 100, 73);
+}
+
+.containerCam .activeView a{
+    color: black !important;
+}
+
+.containerCam .activeView{
+    background-color: transparent !important;
+}
+
+.containerCam .item2 {
+    text-align: center;
+    vertical-align: middle;
+    height: 100%;
+}
+
+.CamImage{
+    height: 100%;
+    width: 100%;
+}

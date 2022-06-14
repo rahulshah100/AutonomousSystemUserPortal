@@ -1,4 +1,4 @@
-.container {
+.containerHomePage {
     padding-top: 2.6%;
     padding-left: 3%;
     max-width: 100%;
@@ -10,14 +10,14 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.item1 {
+.containerHomePage .item1 {
     margin-top: 2%;
     border: 3px solid rgb(2, 91, 130);
     display: grid;
 }
 
 
-.item2 {
+.containerHomePage .item2 {
     margin-top: 0%;
     padding-top: 0%;
     display: grid;
@@ -25,26 +25,26 @@
     grid-template-rows: 10% 90%;
 }
 
-.QuickAccess {
+.containerHomePage .QuickAccess {
     float: left;
     font-size: 23px;
     color: rgb(2, 91, 130);
 }
 
-.SeeMore {
+.containerHomePage .SeeMore {
     float: right;
     font-size: 16px;
     color: rgb(255, 64, 0) !important;
 }
 
-.Cards {
+.containerHomePage .Cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     row-gap: 3%;
     column-gap: 2.5%;
 }
 
-.Card {
+.containerHomePage .Card {
     border: 2px solid rgb(2, 91, 130);
     border-radius: 15px;
     background-color: white;
@@ -57,7 +57,7 @@
     padding-bottom: 15px;
 }
 
-.CardText {
+.containerHomePage .CardText {
     margin-top: 8%;
     margin-left: 30%;
     margin-right: 30%;
