@@ -51,7 +51,7 @@
     height: 100%;
 }
 
-.CamImage{
+.containerCam .CamImage{
     height: 100%;
     width: 100%;
 }
