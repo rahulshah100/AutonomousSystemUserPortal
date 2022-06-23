@@ -10,6 +10,10 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.leftside{
+    max-width: 42.8% !important;
+}
+
 .containerHomePage .item1 {
     margin-top: 2%;
     border: 3px solid rgb(2, 91, 130);
@@ -37,6 +41,10 @@
     color: rgb(255, 64, 0) !important;
 }
 
+.containerHomePage .SeeMore:hover{
+    zoom: 1.1;
+}
+
 .containerHomePage .Cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -60,4 +68,8 @@
 .containerHomePage .CardText {
     margin-left: 30%;
     margin-right: 30%;
+}
+
+.containerHomePage .Card:hover{
+    box-shadow:  2px 2px 4px #000000;
 }
