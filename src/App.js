@@ -19,13 +19,13 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route exact path='/' element={<Home/>} />
-        <Route path='/CameraView' element={<CameraView/>}/>
-        <Route path='/Map' element={<Map/>}/>
-        <Route path='/Chat' element={<Chat/>}/>
+        <Route exact path='/' element={<Home />} />
+        <Route path='/CameraView' element={<CameraView />} />
+        <Route path='/Map' element={<Map />} />
+        <Route path='/Chat' element={<Chat />} />
         <Route exact path='/NotificationHistory' element={<NotificationHistory />} />
         <Route exact path='/Controller' element={<Controller />} />
-        <Route path='*' element={<PageNotFound/>}/>
+        <Route path='*' element={<PageNotFound />} />
       </Routes>
     </Router>
   );

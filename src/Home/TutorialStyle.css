@@ -1,0 +1,42 @@
+.TutorialContainer .goBack:hover{
+    text-shadow:  1px 1px 1.5px #000000;
+    font-size: 1.2;
+}
+
+.TutorialContainer svg{
+    cursor: pointer;
+}
+
+.TutorialContainer svg:hover{
+    box-shadow: 5px 5px 5px #888888;
+    box-shadow: 1px 1px 2px #888888 inset;
+}
+
+.TutorialContainer svg:active{
+    box-shadow: 1px 1px 2px #888888;
+}
+
+.TutorialContainer .Cardfooter{
+    width: 98%;
+}
+
+.TutorialContainer .leftArrow{
+    float: left;
+}
+
+.TutorialContainer .rightArrow, .reverseArrow{
+    float: right;
+}
+
+.TutorialContainer .hide{
+    display: none !important;
+}
+
+.TutorialContainer ul{
+    list-style-type: none;
+}
+
+.TutorialContainer .redBox{
+    background-color: rgb(251, 210, 202);
+    padding: 40px;
+}
