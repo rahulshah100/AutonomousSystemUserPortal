@@ -123,3 +123,7 @@
 .containerMap ul{
     padding-left: 0px;
 }
+
+.containerMap .alert:hover{
+    box-shadow:  2px 2px 4px #000000;
+}
