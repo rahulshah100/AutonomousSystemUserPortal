@@ -1,28 +1,28 @@
 .containerHomePage {
-    padding-top: 2.6%;
+    padding-top: 0%;
     padding-left: 3%;
     max-width: 100%;
     max-height: 100%;
     display: grid;
-    grid-template-columns: 42.8% 50.7%;
+    grid-template-columns: 37.8% 50.7%;
     grid-template-rows: 95%;
-    column-gap: 3%;
+    column-gap: 4%;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.leftside{
+.leftside {
     max-width: 42.8% !important;
 }
 
 .containerHomePage .item1 {
-    margin-top: 2%;
+    margin-top: 2.5%;
     border: 3px solid rgb(2, 91, 130);
     display: grid;
 }
 
 
 .containerHomePage .item2 {
-    margin-top: 0%;
+    margin-top: 4%;
     padding-top: 0%;
     display: grid;
     grid-template-columns: 100%;
@@ -41,7 +41,7 @@
     color: rgb(255, 64, 0) !important;
 }
 
-.containerHomePage .SeeMore:hover{
+.containerHomePage .SeeMore:hover {
     zoom: 1.1;
 }
 
@@ -63,6 +63,7 @@
     font-size: 23px;
     padding-top: 5px;
     padding-bottom: 15px;
+    zoom: 1.13;
 }
 
 .containerHomePage .CardText {
@@ -70,6 +71,6 @@
     margin-right: 30%;
 }
 
-.containerHomePage .Card:hover{
-    box-shadow:  2px 2px 4px #000000;
+.containerHomePage .Card:hover {
+    box-shadow: 2px 2px 4px #000000;
 }

@@ -3,7 +3,12 @@ import './HomeStyle.css'
 import { Link } from 'react-router-dom'
 
 export default function Header(props) {
-
+    setTimeout(()=>{
+        document.getElementById('MapIcon').style.background = 'none'
+        document.getElementById('MapIcon').style.outline = 'none'   
+        document.getElementsByClassName('MapVid')[0].style.border = 'none'  
+        document.getElementsByClassName('MapVidHeader')[0].style.border = 'none'           
+    })
     return (
         <div className='item2'>
             <div className='TopBar'>
