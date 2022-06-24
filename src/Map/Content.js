@@ -23,7 +23,7 @@ export default function Content() {
         <div className='Directions'>
           <div>
             <h4 style={{ textAlign: 'left', display: 'inline-block', minWidth: '50%' }}>Directions</h4>
-            <div style={{ textAlign: 'right', display: 'inline-block', minWidth: '50%' }}>
+            <div style={{ textAlign: 'right', display: 'inline-block', float:'right' }}>
               <Link to="#" style={{ textDecoration: 'none', color: 'rgb(4,166,236)' }} className="showall"><h5> show all </h5></Link>
             </div>
             <div className='steps' style={{ minHeight: '394px' }}>

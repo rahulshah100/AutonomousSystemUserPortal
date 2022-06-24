@@ -5,62 +5,43 @@ export default function Footer(props) {
   setTimeout(async () => {
     let allSrc = Array.from(document.getElementsByClassName('FooterImage'))
 
-    // console.log(allSrc)
-
-    if (props.active === 1) {
-      allSrc[props.active - 1].src = "https://i.ibb.co/Ld3b6Zz/Screenshot-18.png"
-      allSrc[props.active - 1].style.zoom = '1.56'
-      allSrc[props.active - 1].style.left = '19.74%'
-      allSrc[props.active - 1].style.top = '3.56px'
-      allSrc[props.active - 1].style.width = '38px'
+    if (props.active === '1') {
+      allSrc[props.active - 1].src = "images/footer/homeIconActive.png"
     }
-    else if (props.active === 2) {
-      allSrc[props.active - 1].src = "https://i.ibb.co/brZzymp/Screenshot-18-1.png"
-      allSrc[props.active - 1].style.width = '43px'
-      allSrc[props.active - 1].style.left = '40.25%'
-      allSrc[props.active - 1].style.top = '8px'
-      allSrc[props.active - 1].style.zoom = '1.34'
-      allSrc[props.active - 1].style.height = '39px'
+    else if (props.active === '2') {
+      allSrc[props.active - 1].src = "images/footer/eyeIconActive.png"
     }
-    else if (props.active === 3) {
-      allSrc[props.active - 1].src = "https://i.ibb.co/jM99R70/Screenshot-19.png"
-      allSrc[props.active - 1].style.width = '43px'
-      allSrc[props.active - 1].style.right = '40.1%'
-      allSrc[props.active - 1].style.top = '8px'
-      allSrc[props.active - 1].style.height = '39px'
+    else if (props.active === '3') {
+      allSrc[props.active - 1].src = "images/footer/mapIconActive.png"
     }
-    else if (props.active === 4) {
-      allSrc[props.active - 1].src = "https://i.ibb.co/ctL0rsj/Screenshot-19-1.png"
-      allSrc[props.active - 1].style.zoom = '1.7'
-      allSrc[props.active - 1].style.width = '25px'
-      allSrc[props.active - 1].style.top = '6.8px'
-      allSrc[props.active - 1].style.right = '20.1%'
+    else if (props.active === '4') {
+      allSrc[props.active - 1].src = "images/footer/chatIconActive.png"
     }
     else { }
   })
 
   return (
-    <nav className="navbar navbar-expand-lg" style={{ padding: 10, borderTopLeftRadius: 20, borderTopRightRadius: 20, backgroundColor: 'white', overflow: 'hidden' }}>
-      <div className="container-fluid">
-        <ul className="navbar-nav me-auto mb-2 mb-lg-0" style={{ minWidth: '80%' }}>
-          <li className="nav-item footerLink" style={{ minWidth: 20, minHeight: 40 }}>
-            <Link className="nav-link" to="/#Home">
-              <img className="FooterImage" src='https://i.ibb.co/ZSCSq61/Screenshot-9.jpg' alt='home' title='home' style={{ width: 35, height: 35, position: 'absolute', top: 6, left: '20%', zoom: 1.3 }} />
+    <nav className="navbar navbar-expand-lg" style={{ padding: 0, borderTopLeftRadius: 20, borderTopRightRadius: 20, backgroundColor: 'white' }}>
+      <div className="container-fluid" style={{ paddingLeft: '12.5%', paddingRight: '12.5%', paddingTop: '0.37%', paddingBottom: '0.70%' }}>
+        <ul className="navbar-nav me-auto mb-2 mb-lg-0" style={{ display: 'grid', gridTemplateColumns: '10% 10% 10% 10%', gridColumnGap: '20%', minWidth: '100%', textAlign: 'center' }}>
+          <li className="nav-item" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <Link className="nav-link footerLink" to="/#Home" style={{ maxHeight: 45 }}>
+              <img className="FooterImage" src='images/footer/homeIcon.png' alt='home' title='home' />
             </Link>
           </li>
-          <li className="nav-item">
-            <Link className="nav-link footerLink" to="/CameraView">
-              <img className="FooterImage" src='https://i.ibb.co/JsRt6Rb/Screenshot-10.jpg' alt='camera view' title='camera view' style={{ width: 45, height: 35, position: 'absolute', top: 6, left: '40%', zoom: 1.3 }} />
+          <li className="nav-item" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <Link className="nav-link footerLink" to="/CameraView" style={{ maxHeight: 45 }}>
+              <img className="FooterImage" src='images/footer/eyeIcon.png' alt='camera view' title='camera view' />
             </Link>
           </li>
-          <li className="nav-item" id="MapIcon">
-            <Link className="nav-link footerLink" to="/Map">
-              <img className="FooterImage" src='https://i.ibb.co/7QGrhSq/Screenshot-9-1.jpg' alt='map' title='map' style={{ width: 48, height: 35, position: 'absolute', top: 6, right: '40%', zoom: 1.3 }} />
+          <li className="nav-item" id="MapIcon" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <Link className="nav-link footerLink" to="/Map" style={{ maxHeight: 45 }}>
+              <img className="FooterImage" src='images/footer/mapIcon.png' alt='map' title='map' />
             </Link>
           </li>
-          <li className="nav-item">
-            <Link className="nav-link footerLink" to="/Chat">
-              <img className="FooterImage" src='https://i.ibb.co/5My0M72/Screenshot-9-2.jpg' alt="Chat" title="chat" style={{ width: 38, height: 28, position: 'absolute', top: 8, right: '20%', zoom: 1.3 }} />
+          <li className="nav-item" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <Link className="nav-link footerLink" to="/Chat" style={{ maxHeight: 45 }}>
+              <img className="FooterImage" src='images/footer/chatIcon.png' alt="Chat" title="chat" />
             </Link>
           </li>
         </ul>

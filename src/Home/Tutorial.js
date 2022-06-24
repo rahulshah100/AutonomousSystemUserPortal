@@ -9,7 +9,6 @@ export default function Content(props) {
     function pagination() {
         console.log('Pahin')
     }
-    function turnMapBgRed() {  }
 
     function componentDidmount(){
         console.log('mountess')
@@ -18,7 +17,7 @@ export default function Content(props) {
     useEffect(()=>{
         console.log("current Value", currentCard)
         if(currentCard===6){
-            document.getElementById('MapIcon').background = 'red';
+            document.getElementById('MapIcon').border = 'red';
             console.log(document.getElementById('MapIcon').background) 
             console.log('rutenr red')
         }
@@ -71,9 +70,9 @@ export default function Content(props) {
                         <h3 className='redBox' style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minWidth: '100%' }}>Try clicking here</h3>
                         <div style={{ position: 'relative' }} >
                             <div style={{ width: '5px', minHeight: '100px', backgroundColor: 'red', position: 'absolute', top: 0 }}></div>
-                            <div style={{ minWidth: '220px', minHeight: '5px', backgroundColor: 'red', position: 'absolute', top: 100, left: -215 }}></div>
-                            <div style={{ width: '5px', minHeight: '83px', backgroundColor: 'red', position: 'absolute', top: 100, left: -215 }}></div>
-                            <div style={{ color: 'red', position: 'absolute', bottom: -195, left: -232 }}><span style={{ zoom: 4.4 }}> &#8964;</span></div>
+                            <div style={{ minWidth: '160px', minHeight: '5px', backgroundColor: 'red', position: 'absolute', top: 100, left: -155 }}></div>
+                            <div style={{ width: '5px', minHeight: '78px', backgroundColor: 'red', position: 'absolute', top: 100, left: -155 }}></div>
+                            <div style={{ color: 'red', position: 'absolute', bottom: -195, left: -172 }}><span style={{ zoom: 4.4 }}> &#8964;</span></div>
                         </div>
                     </div>
                 </div>
