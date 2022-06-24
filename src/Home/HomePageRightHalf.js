@@ -3,7 +3,9 @@ import './HomeStyle.css'
 import { Link } from 'react-router-dom'
 
 export default function Header(props) {
-
+    setTimeout(()=>{
+        document.getElementById('MapIcon').style.background = 'none'
+    })
     return (
         <div className='item2'>
             <div className='TopBar'>

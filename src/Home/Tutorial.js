@@ -6,20 +6,50 @@ import './TutorialStyle.css'
 export default function Content(props) {
     const[currentCard,setcurrentCard]=useState(1)
 
-    function pagination() {
-        console.log('Pahin')
-    }
-
-    function componentDidmount(){
-        console.log('mountess')
-    }
-
     useEffect(()=>{
         console.log("current Value", currentCard)
+        if(currentCard===1){
+            document.getElementsByClassName('page1')[0].classList.remove('hide')   
+            document.getElementsByClassName('rightArrow')[0].classList.remove('hide')   
+            document.getElementsByClassName('page6')[0].classList+=' hide'            
+            document.getElementsByClassName('leftArrow')[0].classList+=' hide'            
+            document.getElementsByClassName('reverseArrow')[0].classList+=' hide'
+            document.getElementsByClassName('page2')[0].classList+=' hide'
+            document.getElementById('MapIcon').style.background = 'none'
+        }
+        if(currentCard===2){
+            document.getElementsByClassName('page1')[0].classList+=' hide'
+            document.getElementsByClassName('page3')[0].classList+=' hide'
+            document.getElementsByClassName('page2')[0].classList.remove('hide')            
+            document.getElementsByClassName('leftArrow')[0].classList.remove('hide')
+        }
+        if(currentCard===3){
+            document.getElementsByClassName('page2')[0].classList+=' hide'
+            document.getElementsByClassName('page4')[0].classList+=' hide'
+            document.getElementsByClassName('page3')[0].classList.remove('hide')
+        }
+        if(currentCard===4){
+            document.getElementsByClassName('page3')[0].classList+=' hide'
+            document.getElementsByClassName('page5')[0].classList+=' hide'
+            document.getElementsByClassName('page4')[0].classList.remove('hide')
+        }
+        if(currentCard===5){
+            document.getElementsByClassName('page4')[0].classList+=' hide'
+            document.getElementsByClassName('page5')[0].classList.remove('hide')
+            document.getElementsByClassName('page6')[0].classList+=' hide'
+            document.getElementsByClassName('reverseArrow')[0].classList+=' hide'   
+            document.getElementsByClassName('rightArrow')[0].classList.remove('hide')
+            document.getElementsByClassName('leftArrow')[0].classList.remove('hide')
+            document.getElementById('MapIcon').style.background = 'none'
+
+        }
         if(currentCard===6){
-            document.getElementById('MapIcon').border = 'red';
-            console.log(document.getElementById('MapIcon').background) 
-            console.log('rutenr red')
+            document.getElementsByClassName('page5')[0].classList+=' hide'
+            document.getElementsByClassName('page6')[0].classList.remove('hide')
+            document.getElementsByClassName('rightArrow')[0].classList+= ' hide'
+            document.getElementsByClassName('leftArrow')[0].classList+= ' hide'
+            document.getElementsByClassName('reverseArrow')[0].classList.remove('hide')
+            document.getElementById('MapIcon').style.background = 'rgb(251, 210, 202)'           
         }
     }, [currentCard])
 
@@ -38,12 +68,12 @@ export default function Content(props) {
 
 
                 <div>
-                    <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', height: '200px', alignItems: 'center' }} className='hide'>
+                    <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', height: '200px', alignItems: 'center' }} className='page1'>
                         <h3><b> Welcome to Tutorial Mode! </b></h3>
                         <h3 style={{ width: '80%' }}>We can give you instructions for easy navigation</h3>
                     </div>
 
-                    <div className='hide'>
+                    <div className='hide page2'>
                         <h4>
                             <ul>
                                 <li>What is my trip status?</li><br />
@@ -54,19 +84,19 @@ export default function Content(props) {
                         </h4>
                     </div>
 
-                    <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', height: '200px', alignItems: 'center', padding: 20 }} className="hide">
+                    <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', height: '200px', alignItems: 'center', padding: 20 }} className="page3 hide">
                         <h3 className='redBox' style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>Your current location is always displayed on the home screen</h3>
                     </div>
 
-                    <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', height: '200px', alignItems: 'center', padding: 20 }} className="hide">
+                    <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', height: '200px', alignItems: 'center', padding: 20 }} className="page4 hide">
                         <h3 className='redBox' style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>On the Home Screen, you'll also have access to your Destination and Arrival Time</h3>
                     </div>
 
-                    <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', height: '200px', alignItems: 'center', padding: 20 }} className="hide">
+                    <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', height: '200px', alignItems: 'center', padding: 20 }} className="page5 hide">
                         <h3 className='redBox' style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>You can also view your location while in Map View</h3>
                     </div>
 
-                    <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', height: '200px', alignItems: 'center', padding: 20 }} className="" >
+                    <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', height: '200px', alignItems: 'center', padding: 20 }} className="page6 hide" >
                         <h3 className='redBox' style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minWidth: '100%' }}>Try clicking here</h3>
                         <div style={{ position: 'relative' }} >
                             <div style={{ width: '5px', minHeight: '100px', backgroundColor: 'red', position: 'absolute', top: 0 }}></div>
