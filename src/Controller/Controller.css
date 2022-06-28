@@ -1,0 +1,13 @@
+.controllerContainer .ScenarioLink{
+    text-decoration: none !important;
+    color: blue;
+}
+
+.controllerContainer .RadioButtonScenario{
+    display: inline-block;
+    margin: 10px;
+}
+
+.controllerContainer .LabelScenario{
+    margin-left: 3px;
+}

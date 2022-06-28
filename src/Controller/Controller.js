@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { db } from "../FireBaseConnection/FireBaseConnection";
 import { collection, doc, getDocs, updateDoc } from "firebase/firestore";
+import { Link } from 'react-router-dom';
+import './Controller.css'
 
 export default function Controller() {
     // For Testing Purpose
@@ -10,6 +12,7 @@ export default function Controller() {
 
     // Fetching Data from Firebase
     const [NotifContent, setNotifContent] = useState([]);
+    const [CurrentScenarioPage, setCurrentScenarioPage] = useState(1)
     const NotifContent_CollectionRef = collection(db, "Notifs");
 
     // Initializing setState Variables by fetching values from firebase
@@ -59,7 +62,7 @@ export default function Controller() {
             a = a.slice(-15)
         }
         updateDoc(doc(db, "Notifs", 'Bldcpia0cF0lbMjHG5ji'), { 'NotifHistory': JSON.stringify(a) })
-        
+
         // Changing the NotifAdded value to true in firebase
         updateDoc(doc(db, "Notifs", 'Bldcpia0cF0lbMjHG5ji'), { 'NotifAdded': true })
     }
@@ -88,10 +91,20 @@ export default function Controller() {
         if (NotifContent.length === 0) { NewNotifSrNum = 1 }
         else { NewNotifSrNum = NotifContent[NotifContent.length - 1]['SrNum'] + 1 }
 
+        // Getting Value of Radio Button
+        let ScenarioCase = document.getElementsByName('Scenario')
+        for (let i = 0; i < ScenarioCase.length; i++) {
+            if (ScenarioCase[i].checked) {
+                ScenarioCase = i + 1
+                break
+            }
+        }
+
         let NewNotifContent = {
             SrNum: NewNotifSrNum,
             Title: document.getElementById('NewNotifTitle').value,
             Desc: document.getElementById('NewNotifDesc').value,
+            Scenario: ScenarioCase
         }
 
         setNotifContent([...NotifContent, NewNotifContent])
@@ -105,7 +118,7 @@ export default function Controller() {
             let AlteredNotifContent = localStorage.NotifContent
             // console.log(AlteredNotifContent)
             updateDoc(doc(db, "Notifs", 'Bldcpia0cF0lbMjHG5ji'), { 'NotifContent': AlteredNotifContent })
-        }, 1000)
+        })
     }
 
 
@@ -117,30 +130,98 @@ export default function Controller() {
         }
     }
 
+    function ChangeScenario() {
+        // Updating variables which are declared using useState, happens Asynchronously. So here, although the function was executed but it was ran on the previous values of useState variables. By using setTimeout, which is an Asynchronous function, this problem is solved.
+        setTimeout(() => {
+            console.log("clicked")
+            if (window.location.href.substring(window.location.href.lastIndexOf('#') + 1) === "Scenario1") {
+                console.log('in1')
+                setCurrentScenarioPage(1)
+                console.log('in12')
+
+                if (!document.getElementsByClassName('Scenariobtn')[2].classList.contains('btn-light')) {
+                    document.getElementsByClassName('Scenariobtn')[2].classList += ' btn-light'
+                }
+                if (document.getElementsByClassName('Scenariobtn')[1].classList.contains('btn-light')) {
+                    document.getElementsByClassName('Scenariobtn')[1].classList.remove('btn-light')
+                    document.getElementsByClassName('Scenariobtn')[1].classList += ' btn-secondary'
+                }
+                if (document.getElementsByClassName('Scenariobtn')[0].classList.contains('btn-light')) {
+                    document.getElementsByClassName('Scenariobtn')[0].classList.remove('btn-light')
+                    document.getElementsByClassName('Scenariobtn')[0].classList += ' btn-secondary'
+                }
+            }
+            if (window.location.href.substring(window.location.href.lastIndexOf('#') + 1) === "Scenario2") {
+                console.log('in2')
+                setCurrentScenarioPage(2)
+                console.log('in22')
+
+                if (!document.getElementsByClassName('Scenariobtn')[1].classList.contains('btn-light')) {
+                    document.getElementsByClassName('Scenariobtn')[1].classList += ' btn-light'
+                }
+                if (document.getElementsByClassName('Scenariobtn')[0].classList.contains('btn-light')) {
+                    document.getElementsByClassName('Scenariobtn')[0].classList.remove('btn-light')
+                    document.getElementsByClassName('Scenariobtn')[0].classList += ' btn-secondary'
+                }
+                if (document.getElementsByClassName('Scenariobtn')[2].classList.contains('btn-light')) {
+                    document.getElementsByClassName('Scenariobtn')[2].classList.remove('btn-light')
+                    document.getElementsByClassName('Scenariobtn')[2].classList += ' btn-secondary'
+                }
+            }
+            if (window.location.href.substring(window.location.href.lastIndexOf('#') + 1) === "Scenario3") {
+                console.log('in3')
+                setCurrentScenarioPage(3)
+                console.log('in32')
+
+                if (!document.getElementsByClassName('Scenariobtn')[0].classList.contains('btn-light')) {
+                    document.getElementsByClassName('Scenariobtn')[0].classList += ' btn-light'
+                }
+                if (document.getElementsByClassName('Scenariobtn')[2].classList.contains('btn-light')) {
+                    document.getElementsByClassName('Scenariobtn')[2].classList.remove('btn-light')
+                    document.getElementsByClassName('Scenariobtn')[2].classList += ' btn-secondary'
+                }
+                if (document.getElementsByClassName('Scenariobtn')[1].classList.contains('btn-light')) {
+                    document.getElementsByClassName('Scenariobtn')[1].classList.remove('btn-light')
+                    document.getElementsByClassName('Scenariobtn')[1].classList += ' btn-secondary'
+                }
+            }
+        })
+    }
 
     return (
-        <div style={{ margin: '20px 30px' }} onLoad={() => { document.title = "Notification Controller"; }}>
-            <hr /><h2>Click on <button type="button" className="btn btn-warning" style={{ zoom: 0.7 }}><b> Show</b></button> to make that Notification Pop up on User's Screen.</h2><hr />
+        <div style={{ margin: '20px 30px' }} onLoad={() => { document.title = "Notification Controller" }} className="controllerContainer">
+            <hr /><h2>
+                Click on
+                <button type="button" className="btn btn-warning" style={{ zoom: 0.7, margin: '0px 8px' }}>
+                    <b> Show </b>
+                </button>
+                to make that Notification Pop up on User's Screen.
+                <Link className="ScenarioLink" to="#Scenario3"><button type="submit" title="Scenario 3" className="Scenariobtn btn btn-secondary" style={{ float: 'right', marginLeft: 8, border: '1px solid black' }} onClick={() => ChangeScenario()}>Scenario 3</button></Link>
+                <Link className="ScenarioLink" to="#Scenario2"> <button type="submit" title="Scenario 2" className="Scenariobtn btn btn-secondary" style={{ float: 'right', marginLeft: 8, border: '1px solid black' }} onClick={() => ChangeScenario()}> Scenario 2 </button></Link>
+                <Link className="ScenarioLink" to="#Scenario1"><button type="submit" title="Scenario 1" className="Scenariobtn btn btn-light" style={{ float: 'right', marginLeft: 8, border: '1px solid black' }} onClick={() => ChangeScenario()}> Scenario 1 </button></Link>
+            </h2><hr />
 
             <div className="list-notifs" style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
                 {NotifContent.length === 0 ? 'No Notifications' :
                     NotifContent.map((notif) => {
-                        return <div key={notif.SrNum} className="alert alert-success alert-dismissible fade show" role="alert" style={{ backgroundColor: 'white', border: '2px solid rgba(240, 100, 73)', fontSize: 13, width: '50%', display: 'flex', flexDirection: 'row', paddingTop: 10, paddingBottom: 0, paddingRight: 12, paddingLeft: 10, color: 'black', fontFamily: 'Arial', marginRight: 25, marginBottom: 35, flexBasis: '50%' }}>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-bell" viewBox="0 0 16 16" style={{ marginLeft: 6, marginRight: 14, marginTop: 2, color: 'black', borderRadius: 6 }}>
-                                <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
-                            </svg>
-                            <img src="https://d1vg9wkrun3t3k.cloudfront.net/users/5edb2893-05a4-44db-a779-b6d26b6657e7/forever_files/e75be267-cfb1-44f8-b992-f144f776715c/original.png?format=jpg&width=155&height=151&quality=85" alt="notificationIcon" style={{ height: 30, position: 'absolute', top: 6, left: 6 }} />
-                            <span style={{ minWidth: '96%' }}>
-                                <button type="button" className="btn btn-warning" title="Shows this Notification on User's Screen" style={{ zoom: 0.7, float: 'right' }} onClick={() => ShowNotifOnUserScreen(notif.SrNum)}><b> Show</b></button>
-                                <h4 style={{ fontSize: 15, color: 'rgb(40,116,149)' }}><b> {notif.Title} </b></h4>
-                                <p>{notif.Desc}</p>
-                                <button type="button" title="Delete this Notification" className="btn btn-danger" style={{ border: '1px solid black', zoom: 0.7, float: 'right', position: 'relative', top: '15%', right: '0%' }} onClick={() => DelNotification(notif.SrNum)}><b> Delete</b></button>
-                            </span>
-                        </div>
+                        if (notif.Scenario === CurrentScenarioPage) {
+                            return <div key={notif.SrNum} className="alert alert-success alert-dismissible fade show" role="alert" style={{ backgroundColor: 'white', border: '2px solid rgba(240, 100, 73)', fontSize: 13, width: '50%', display: 'flex', paddingTop: 10, paddingBottom: 0, paddingRight: 12, paddingLeft: 10, color: 'black', fontFamily: 'Arial', marginBottom: 35, marginLeft: 10, display: 'flex', flexWrap: 'nowrap', flexDirection: 'row', justifyContent: 'center' }}>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-bell" viewBox="0 0 16 16" style={{ marginLeft: 6, marginRight: 14, marginTop: 2, color: 'black', borderRadius: 6 }}>
+                                    <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
+                                </svg>
+                                <img src="https://d1vg9wkrun3t3k.cloudfront.net/users/5edb2893-05a4-44db-a779-b6d26b6657e7/forever_files/e75be267-cfb1-44f8-b992-f144f776715c/original.png?format=jpg&width=155&height=151&quality=85" alt="notificationIcon" style={{ height: 30, position: 'absolute', top: 6, left: 6 }} />
+                                <span style={{ minWidth: '96%' }}>
+                                    <button type="button" className="btn btn-warning" title="Shows this Notification on User's Screen" style={{ zoom: 0.7, float: 'right' }} onClick={() => ShowNotifOnUserScreen(notif.SrNum)}><b> Show</b></button>
+                                    <h4 style={{ fontSize: 15, color: 'rgb(40,116,149)' }}><b> {notif.Title} </b></h4>
+                                    <p>{notif.Desc}</p>
+                                    <button type="button" title="Delete this Notification" className="btn btn-danger" style={{ border: '1px solid black', zoom: 0.7, float: 'right', position: 'relative', top: '15%', right: '0%' }} onClick={() => DelNotification(notif.SrNum)}><b> Delete</b></button>
+                                </span>
+                            </div>
+                        }
                     })}
-            </div>
+            </div><br />
 
-            <br /><hr /><h2>Add a New Notification</h2><hr />
+            <hr /><h2>Add a New Notification</h2><hr />
             <form onSubmit={(e) => { e.preventDefault(); AddNotification() }}>
                 <div className="alert alert-success alert-dismissible fade show" role="alert" style={{ backgroundColor: 'white', border: '2px solid rgba(240, 100, 73)', fontSize: 13, width: '50%', display: 'flex', flexDirection: 'row', paddingTop: 10, paddingBottom: 0, paddingRight: 0, paddingLeft: 10, fontFamily: 'Arial', marginBottom: 40 }}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-bell" viewBox="0 0 16 16" style={{ marginLeft: 6, marginRight: 14, marginTop: 2, color: 'black', borderRadius: 6 }}>
@@ -149,9 +230,31 @@ export default function Controller() {
                     <img src="https://d1vg9wkrun3t3k.cloudfront.net/users/5edb2893-05a4-44db-a779-b6d26b6657e7/forever_files/e75be267-cfb1-44f8-b992-f144f776715c/original.png?format=jpg&width=155&height=151&quality=85" alt="notificationIcon" style={{ height: 30, position: 'absolute', top: 6, left: 6 }} />
                     <span style={{ width: '90%' }}>
                         <h4 style={{ fontSize: 15, color: 'rgb(40,116,149)' }}><b>  <label htmlFor="NewNotifTitle" className="form-label"><b> Title* </b></label>
-                            <input style={{ fontSize: 13, backgroundColor: 'rgb(253,253,257) !important', background:'none' }} type="text" className="form-control" id="NewNotifTitle" aria-describedby="emailHelp" placeholder='Example: Breaking Due to an Unknown Object Ahead' required /> </b></h4>
+                            <input style={{ fontSize: 13, backgroundColor: 'rgb(253,253,257) !important', background: 'none' }} type="text" className="form-control" id="NewNotifTitle" aria-describedby="emailHelp" placeholder='Example: Breaking Due to an Unknown Object Ahead' required /> </b></h4>
+
                         <label htmlFor="NewNotifDesc" className="form-label"><b>Description*</b></label>
                         <textarea style={{ fontSize: 13, backgroundColor: 'rgb(253,253,257)' }} className="form-control" id="NewNotifDesc" rows="2" placeholder='Example: To ensure your safety, the vehicle brakes when it detects...' required></textarea>
+
+                        <label htmlFor="NewNotifDesc" className="form-label"><b>Add to:</b></label>
+                        <div className="RadioButtonScenario">
+                            <input className="form-check-input" type="radio" name="Scenario" value={1} id="flexRadioDefault1" defaultChecked />
+                            <label className="LabelScenario" htmlFor="flexRadioDefault1">
+                                Scenario 1
+                            </label>
+                        </div>
+                        <div className="RadioButtonScenario">
+                            <input className="form-check-input" type="radio" name="Scenario" value={2} id="flexRadioDefault2" />
+                            <label className="LabelScenario" htmlFor="flexRadioDefault2">
+                                Scenario 2
+                            </label>
+                        </div>
+                        <div className="RadioButtonScenario">
+                            <input className="form-check-input" type="radio" name="Scenario" value={3} id="flexRadioDefault3" />
+                            <label className="LabelScenario" htmlFor="flexRadioDefault3">
+                                Scenario 3
+                            </label>
+                        </div>
+
                         <button type="submit" title="Add this Notification" className="btn btn-success" style={{ border: '1px solid black', zoom: 0.8, float: 'right', position: 'relative', top: 30, left: 40 }}>Add</button>
                     </span>
                 </div>
