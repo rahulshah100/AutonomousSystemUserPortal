@@ -75,7 +75,7 @@ export default function Header() {
     }
 
     return (
-        <nav className="navbar navbar-expand-lg bg-dark" style={{ padding: 10, borderBottomLeftRadius: 18, borderBottomRightRadius: 18, zoom: 1.25 }}>
+        <nav className="navbar headerContainer navbar-expand-lg bg-dark" style={{ padding: 0, borderBottomLeftRadius: 18, borderBottomRightRadius: 18, zoom: 1.25 }}>
 
             {/* Notifications */}
             <div id="NotificationDIV" className="NotifHide alert alert-success alert-dismissible fade show" role="alert" style={{ zIndex: 1, position: 'absolute', top: 66, backgroundColor: 'white', border: '2px solid rgba(240, 100, 73)', fontSize: 13, width: '50%', left: '25%', display: 'flex', flexDirection: 'row', paddingTop: 12, paddingBottom: 0, paddingLeft: 10, boxShadow: '-10px 1px 30px black', color: 'black', fontFamily: 'Arial' }}>
@@ -90,7 +90,7 @@ export default function Header() {
                 </span>
             </div>
 
-            <div className="container-fluid">
+            <div className="container-fluid" style={{ paddingLeft: '0px' }}>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
@@ -98,38 +98,34 @@ export default function Header() {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
 
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li className="nav-item headerLink" style={{ backgroundColor: 'rgba(240, 100, 73)', minWidth: 20, minHeight: 40 }}>
+                        <li className="nav-item headerLink" style={{ background: '#F06449', borderBottomLeftRadius: 14, paddingLeft: '16px', paddingRight: '20px', marginRight:'4px' }}>
                             <Link className="nav-link" aria-current="page" to="#" >
-                                <img src='https://i.ibb.co/X34P8MJ/Screenshot-2-1.jpg' style={{ width: 45, height: 45, position: 'absolute', top: -0.3, left: -1.4, zoom: 1.35, borderBottomLeftRadius: 14 }} />
-                                <img src='https://i.ibb.co/LDFJngP/Screenshot-2.jpg' style={{ width: 45, height: 45, position: 'absolute', top: 8, left: 7, zoom: 0.9, borderBottomLeftRadius: 16 }} />
+                                <img src="images/header/Siren.png" alt="" width={'47px'} />
                             </Link>
                         </li>
-                        <li className="nav-item headerLink">
-                            <Link alt='Notifications' title='Notifications' className="nav-link" to="/NotificationHistory">
-                                <img src='https://i.ibb.co/xjDhpvL/Screenshot-6.jpg' style={{ width: 45, height: 45, position: 'absolute', top: 1, left: 49, zoom: 1.3 }} />
+                        <li className="nav-item headerLink" style={{ backgroundColor: '#45473A', margin: '4px', padding: 0 }}>
+                            <Link alt='Notifications' title='Notifications' className="nav-link" to="/NotificationHistory" style={{ padding: '0px !important', margin: 0, minWidth: '65%', minHeight: '80%', border: '2px solid white', borderRadius: 40, alignItems: 'center', textAlign: 'center', display:'flex', alignItems:'center', justifyContent:'center' }}>
+                                    <img src="images/header/NotificationBell.png" alt="Notification Icon" width={'26px'} />
                             </Link>
                         </li>
-                        <li className="nav-item" >
-                            <Link className="nav-link" to="#">
-                                <img src='https://i.ibb.co/2j7V37r/Screenshot-7.jpg' className="headerLink" style={{ width: 45, height: 45, position: 'absolute', top: 1, left: 97, zoom: 1.3 }} />
+                        <li className="nav-item headerLink" style={{ backgroundColor: '#45473A', margin: '4px' }}>                           
+                            <Link alt="Settings" className="nav-link" to="#" style={{ padding: '0px !important', margin: '0px 13px', minWidth: '65%', minHeight: '80%', outline: '2px solid white', borderRadius: 27.5, alignItems: 'center', textAlign: 'center', display:'flex', alignItems:'center', justifyContent:'center' }}>
+                                <img src="images/header/Help.png" alt="Settings Icon" width={'15px'} />
                             </Link>
                         </li>
-                        <li className="nav-item headerLink">
-                            <Link className="nav-link" to="#">
-                                <img src='https://i.ibb.co/R2dMPFC/Screenshot-8.jpg' alt="settings" title="settings" style={{ width: 45, height: 45, position: 'absolute', top: 1, left: 145, zoom: 1.3 }} />
+                        <li className="nav-item headerLink" style={{ backgroundColor: '#45473A', margin: '4px' }}>
+                            <Link alt="Settings" className="nav-link" to="#" style={{ padding: '0px !important', margin: '0px 13px', minWidth: '68%', minHeight: '80%', outline: '2px solid white', borderRadius: 27.5, alignItems: 'center', textAlign: 'center', display:'flex', alignItems:'center', justifyContent:'center' }}>
+                                <img src="images/header/Settings.png" alt="Settings Icon" width={'32px'} />
                             </Link>
                         </li>
                     </ul>
 
                     <form className="d-flex" role="search" onSubmit={(e) => { e.preventDefault() }}>
                         <div className="input-group">
-                            <input type="text" id="SearchBar" className="form-control" placeholder="" aria-label="Input group example" aria-describedby="basic-addon1" style={{ paddingLeft: '40px', marginRight: 3, borderRadius: 3 }} />
+                            <input type="text" id="SearchBar" className="form-control" placeholder="" aria-label="Input group example" aria-describedby="basic-addon1" style={{ paddingLeft: '40px', marginRight: 5, borderRadius: 3 }} />
                         </div>
-                        <button className="btn headerLink mic" type="submit" style={{ backgroundColor: 'rgba(240, 100, 73)', color: "white", width: 50, marginRight: 70 }} onClick={() => record()}>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" name="bi bi-mic-fill" viewBox="0 0 16 16" style={{ zoom: 1.3 }}>
-                                <path d="M5 3a3 3 0 0 1 6 0v5a3 3 0 0 1-6 0V3z" />
-                                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z" />
-                            </svg>
+                        <button className="btn headerLink mic" type="submit" style={{ backgroundColor: 'rgba(240, 100, 73)', color: "white", width: 50, marginRight: 70, display: 'flex', justifyContent:'center', alignItems:'center' }} onClick={() => record()}>
+                                <img src="images/header/Microphone.png" alt="" style={{zoom:0.7}}/>
                         </button>
                     </form>
                 </div>
