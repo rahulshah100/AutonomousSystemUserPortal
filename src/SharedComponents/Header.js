@@ -46,7 +46,7 @@ export default function Header() {
                 }
             };
             getNotifAdded();
-        }, 50000000)
+        }, 500000000)
     }, [NotifToBeShown]);
 
     useEffect(() => {
@@ -79,12 +79,11 @@ export default function Header() {
 
             {/* Notifications */}
             <div id="NotificationDIV" className="NotifHide alert alert-success alert-dismissible fade show" role="alert" style={{ zIndex: 1, position: 'absolute', top: 66, backgroundColor: 'white', border: '2px solid rgba(240, 100, 73)', fontSize: 13, width: '50%', left: '25%', display: 'flex', flexDirection: 'row', paddingTop: 12, paddingBottom: 0, paddingLeft: 10, boxShadow: '-10px 1px 30px black', color: 'black', fontFamily: 'Arial' }}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-bell" viewBox="0 0 16 16" style={{ marginLeft: 6, marginRight: 6, marginTop: 2, color: 'black', borderRadius: 6 }}>
-                    <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
-                </svg>
-                <img src="https://d1vg9wkrun3t3k.cloudfront.net/users/5edb2893-05a4-44db-a779-b6d26b6657e7/forever_files/e75be267-cfb1-44f8-b992-f144f776715c/original.png?format=jpg&width=155&height=151&quality=85" alt="notificationIcon" style={{ height: 30, position: 'absolute', top: 6, left: 6 }} />
+                <div style={{ display: 'inline-flex', minHeight: '21px', minWidth: '21px', padding: '3px', background: '#36382E', borderRadius: '6px', alignItems: 'center', justifyContent: 'center', marginRight: '3px' }}>
+                    <img src="images/Notif.png" alt="Notification" />
+                </div>
                 <span>
-                    <h4 style={{ color: 'blue', fontSize: 15, color: 'rgb(40,116,149)', display: 'inline' }}><b> {NotifToBeShown["Title"]} </b></h4>
+                    <h4 style={{ color: 'blue', fontSize: 15, color: 'rgb(40,116,149)', display: 'inline', verticalAlign:'top' }}><b> {NotifToBeShown["Title"]} </b></h4>
                     <button type="button" className="btn-close" aria-label="Close" onClick={() => { closeNotif() }}></button>
                     <p style={{ marginLeft: '6.1%' }}>{NotifToBeShown["Desc"]}</p>
                 </span>
@@ -98,24 +97,24 @@ export default function Header() {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
 
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li className="nav-item headerLink" style={{ background: '#F06449', borderBottomLeftRadius: 14, paddingLeft: '16px', paddingRight: '20px', marginRight:'4px' }}>
+                        <li className="nav-item headerLink" style={{ background: '#F06449', borderBottomLeftRadius: 14, paddingLeft: '16px', paddingRight: '20px', marginRight: '3px' }}>
                             <Link className="nav-link" aria-current="page" to="#" >
                                 <img src="images/header/Siren.png" alt="" width={'47px'} />
                             </Link>
                         </li>
-                        <li className="nav-item headerLink" style={{ backgroundColor: '#45473A', margin: '4px', padding: 0 }}>
-                            <Link alt='Notifications' title='Notifications' className="nav-link" to="/NotificationHistory" style={{ padding: '0px !important', margin: 0, minWidth: '65%', minHeight: '80%', border: '2px solid white', borderRadius: 40, alignItems: 'center', textAlign: 'center', display:'flex', alignItems:'center', justifyContent:'center' }}>
-                                    <img src="images/header/NotificationBell.png" alt="Notification Icon" width={'26px'} />
+                        <li className="nav-item headerLink" style={{ backgroundColor: '#45473A', margin: '4px 3px', padding: 0 }}>
+                            <Link alt='Notifications' title='Notifications' className="nav-link" to="/NotificationHistory" style={{ padding: '0px !important', margin: 0, minWidth: '65%', minHeight: '80%', border: '2px solid white', borderRadius: 40, alignItems: 'center', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                <img src="images/header/NotificationBell.png" alt="Notification Icon" width={'26px'} />
                             </Link>
                         </li>
-                        <li className="nav-item headerLink" style={{ backgroundColor: '#45473A', margin: '4px' }}>                           
-                            <Link alt="Settings" className="nav-link" to="#" style={{ padding: '0px !important', margin: '0px 13px', minWidth: '65%', minHeight: '80%', outline: '2px solid white', borderRadius: 27.5, alignItems: 'center', textAlign: 'center', display:'flex', alignItems:'center', justifyContent:'center' }}>
+                        <li className="nav-item headerLink" style={{ backgroundColor: '#45473A', margin: '4px 3px' }}>
+                            <Link alt="Settings" className="nav-link" to="#" style={{ padding: '0px !important', margin: '0px 13px', minWidth: '65%', minHeight: '80%', outline: '2px solid white', borderRadius: 27.5, alignItems: 'center', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                 <img src="images/header/Help.png" alt="Settings Icon" width={'15px'} />
                             </Link>
                         </li>
-                        <li className="nav-item headerLink" style={{ backgroundColor: '#45473A', margin: '4px' }}>
-                            <Link alt="Settings" className="nav-link" to="#" style={{ padding: '0px !important', margin: '0px 13px', minWidth: '68%', minHeight: '80%', outline: '2px solid white', borderRadius: 27.5, alignItems: 'center', textAlign: 'center', display:'flex', alignItems:'center', justifyContent:'center' }}>
-                                <img src="images/header/Settings.png" alt="Settings Icon" width={'32px'} />
+                        <li className="nav-item headerLink" style={{ backgroundColor: '#45473A', margin: '4px 3px' }}>
+                            <Link alt="Settings" className="nav-link" to="#" style={{ padding: '0px !important', margin: '0px 13px', minWidth: '68%', minHeight: '80%', outline: '2px solid white', borderRadius: 27.5, alignItems: 'center', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                <img src="images/header/Settings.png" alt="Settings Icon" width={'32.3px'} />
                             </Link>
                         </li>
                     </ul>
@@ -124,8 +123,8 @@ export default function Header() {
                         <div className="input-group">
                             <input type="text" id="SearchBar" className="form-control" placeholder="" aria-label="Input group example" aria-describedby="basic-addon1" style={{ paddingLeft: '40px', marginRight: 5, borderRadius: 3 }} />
                         </div>
-                        <button className="btn headerLink mic" type="submit" style={{ backgroundColor: 'rgba(240, 100, 73)', color: "white", width: 50, marginRight: 70, display: 'flex', justifyContent:'center', alignItems:'center' }} onClick={() => record()}>
-                                <img src="images/header/Microphone.png" alt="" style={{zoom:0.7}}/>
+                        <button className="btn headerLink mic" type="submit" style={{ backgroundColor: 'rgba(240, 100, 73)', color: "white", width: 50, marginRight: 70, display: 'flex', justifyContent: 'center', alignItems: 'center' }} onClick={() => record()}>
+                            <img src="images/header/Microphone.png" alt="" style={{ zoom: 0.7 }} />
                         </button>
                     </form>
                 </div>
