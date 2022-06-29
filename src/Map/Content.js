@@ -24,7 +24,7 @@ export default function Content() {
           <div>
             <h4 style={{ textAlign: 'left', display: 'inline-block', minWidth: '50%' }}>Directions</h4>
             <div style={{ textAlign: 'right', display: 'inline-block', float:'right' }}>
-              <Link to="#" style={{ textDecoration: 'none', color: 'rgb(4,166,236)' }} className="showall"><h5> show all </h5></Link>
+              <Link to="#" title='show all' style={{ textDecoration: 'none', color: 'rgb(4,166,236)' }} className="showall"><h5> show all </h5></Link>
             </div>
             <div className='steps' style={{ minHeight: '394px' }}>
             </div>
@@ -37,7 +37,7 @@ export default function Content() {
           <h4>Optional</h4>
           <ul style={{ listStyle: 'none', color: 'rgb(125, 125, 125)' }}>
             <li>
-              <span><input type="checkbox" /></span>
+              <span><input type="checkbox" title='Speed Limit On/Off'/></span>
               <span style={{ display: 'inline-block', marginTop: 4, marginRight: 50, fontSize: 18 }}> Speed Limit </span>
               <span className='info tool_tip'>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -48,7 +48,7 @@ export default function Content() {
               </span>
             </li>
             <li style={{ marginTop: 20, marginBottom: 20 }}>
-              <span><input type="checkbox" /></span>
+              <span><input type="checkbox" title='Current Speed On/Off'/></span>
               <span style={{ marginRight: 35, fontSize: 18 }}>Current Speed</span>
               <span className='info tool_tip'><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
@@ -58,7 +58,7 @@ export default function Content() {
               </span>
             </li>
             <li>
-              <span><input type="checkbox" /></span>
+              <span><input type="checkbox" title='Show Traffic On/Off'/></span>
               <span style={{ marginRight: 50, fontSize: 18 }}>Show Traffic</span>
               <span className='info tool_tip'><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
@@ -73,7 +73,7 @@ export default function Content() {
         <div className='help'>
           <h4> Need help? </h4>
 
-          <div className="alert" style={{ backgroundColor: 'white', border: '2px solid rgba(32, 110, 144)', padding: '10px', borderRadius: '12px' }}>
+          <div title="Change Destination" className="alert" style={{ backgroundColor: 'white', border: '2px solid rgba(32, 110, 144)', padding: '10px', borderRadius: '12px' }}>
             <span style={{ paddingTop: '10%', marginLeft: '5px', minWidth: 55, minHeight: 55, borderRadius: 27.5, border: '2px solid rgb(2,91,130)', backgroundColor: 'rgb(247,247,249)', textAlign: 'center', verticalAlign: 'middle' }}>
               <img src="images/Polyline.png" alt="notificationIcon" style={{ zoom: 1.12 }} />
             </span>
@@ -82,7 +82,7 @@ export default function Content() {
             </h5>
           </div>
 
-          <div className="alert" style={{ backgroundColor: 'white', border: '2px solid rgba(32, 110, 144)', padding: '10px', borderRadius: '12px' }}>
+          <div title="Vehicle Monitor" className="alert" style={{ backgroundColor: 'white', border: '2px solid rgba(32, 110, 144)', padding: '10px', borderRadius: '12px' }}>
             <span style={{ paddingTop: '10%', marginLeft: '5px', minWidth: 55, minHeight: 55, borderRadius: 27.5, border: '2px solid rgb(2,91,130)', backgroundColor: 'rgb(247,247,249)', textAlign: 'center', verticalAlign: 'middle' }}>
               <img src="images/clip.png" alt="notificationIcon" style={{ zoom: 1.12 }} />
             </span>
@@ -91,7 +91,7 @@ export default function Content() {
             </h5>
           </div>
 
-          <div className="alert" style={{ backgroundColor: 'white', border: '2px solid rgba(32, 110, 144)', padding: '10px', borderRadius: '12px' }}>
+          <div title="Change Laguage" className="alert" style={{ backgroundColor: 'white', border: '2px solid rgba(32, 110, 144)', padding: '10px', borderRadius: '12px' }}>
             <span style={{ paddingTop: '17%', marginLeft: '5px', minWidth: 55, minHeight: 55, borderRadius: 27.5, border: '2px solid rgb(2,91,130)', backgroundColor: 'rgb(247,247,249)', textAlign: 'center', verticalAlign: 'middle' }}>
               <img src="images/clarity_language-line.png" alt="notificationIcon" style={{ zoom: 1.12 }} />
             </span>

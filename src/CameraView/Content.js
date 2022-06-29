@@ -34,13 +34,13 @@ export default function Content() {
     return (
         <div className='containerCam' style={{ height: '40.2vw' }}>
             <div className='item1'>
-                <div className='Viewbtn activeView' id='Rear' onClick={(e) => { initializePage(e) }}><Link to='#' style={{
+                <div className='Viewbtn activeView' id='Rear' onClick={(e) => { initializePage(e) }}><Link title='Rear View' to='#' style={{
                     textDecoration: 'none', color: 'white'
                 }}>Rear View</Link></div>
-                <div className='Viewbtn' id='Front' onClick={(e) => { initializePage(e) }}><Link to='#' style={{
+                <div className='Viewbtn' title='Front View' id='Front' onClick={(e) => { initializePage(e) }}><Link to='#' style={{
                     textDecoration: 'none', color: 'white'
                 }}>Front View</Link></div>
-                <div className='Viewbtn' id='Left' onClick={(e) => { initializePage(e) }}><Link to='#' style={{
+                <div className='Viewbtn' title='Left View' id='Left' onClick={(e) => { initializePage(e) }}><Link to='#' style={{
                     textDecoration: 'none', color: 'white'
                 }}>Left Side View</Link></div>
             </div>

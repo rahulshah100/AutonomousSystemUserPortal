@@ -46,7 +46,7 @@ export default function Header() {
                 }
             };
             getNotifAdded();
-        }, 500000000)
+        }, 50000000)
     }, [NotifToBeShown]);
 
     useEffect(() => {
@@ -84,7 +84,7 @@ export default function Header() {
                 </div>
                 <span>
                     <h4 style={{ color: 'blue', fontSize: 15, color: 'rgb(40,116,149)', display: 'inline', verticalAlign:'top' }}><b> {NotifToBeShown["Title"]} </b></h4>
-                    <button type="button" className="btn-close" aria-label="Close" onClick={() => { closeNotif() }}></button>
+                    <button title="close notification" type="button" className="btn-close" aria-label="Close" onClick={() => { closeNotif() }}></button>
                     <p style={{ marginLeft: '6.1%' }}>{NotifToBeShown["Desc"]}</p>
                 </span>
             </div>
@@ -98,22 +98,22 @@ export default function Header() {
 
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item headerLink" style={{ background: '#F06449', borderBottomLeftRadius: 14, paddingLeft: '16px', paddingRight: '20px', marginRight: '3px' }}>
-                            <Link className="nav-link" aria-current="page" to="#" >
-                                <img src="images/header/Siren.png" alt="" width={'47px'} />
+                            <Link title='Home' className="nav-link" aria-current="page" to="#" >
+                                <img src="images/header/Siren.png" alt="Home Button Image" width={'47px'} />
                             </Link>
                         </li>
                         <li className="nav-item headerLink" style={{ backgroundColor: '#45473A', margin: '4px 3px', padding: 0 }}>
-                            <Link alt='Notifications' title='Notifications' className="nav-link" to="/NotificationHistory" style={{ padding: '0px !important', margin: 0, minWidth: '65%', minHeight: '80%', border: '2px solid white', borderRadius: 40, alignItems: 'center', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <Link title='Notifications' className="nav-link" to="/NotificationHistory" style={{ padding: '0px !important', margin: 0, minWidth: '65%', minHeight: '80%', border: '2px solid white', borderRadius: 40, alignItems: 'center', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                 <img src="images/header/NotificationBell.png" alt="Notification Icon" width={'26px'} />
                             </Link>
                         </li>
                         <li className="nav-item headerLink" style={{ backgroundColor: '#45473A', margin: '4px 3px' }}>
-                            <Link alt="Settings" className="nav-link" to="#" style={{ padding: '0px !important', margin: '0px 13px', minWidth: '65%', minHeight: '80%', outline: '2px solid white', borderRadius: 27.5, alignItems: 'center', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <Link title='Help' className="nav-link" to="#" style={{ padding: '0px !important', margin: '0px 13px', minWidth: '65%', minHeight: '80%', outline: '2px solid white', borderRadius: 27.5, alignItems: 'center', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                 <img src="images/header/Help.png" alt="Settings Icon" width={'15px'} />
                             </Link>
                         </li>
                         <li className="nav-item headerLink" style={{ backgroundColor: '#45473A', margin: '4px 3px' }}>
-                            <Link alt="Settings" className="nav-link" to="#" style={{ padding: '0px !important', margin: '0px 13px', minWidth: '68%', minHeight: '80%', outline: '2px solid white', borderRadius: 27.5, alignItems: 'center', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <Link title="Settings" className="nav-link" to="#" style={{ padding: '0px !important', margin: '0px 13px', minWidth: '68%', minHeight: '80%', outline: '2px solid white', borderRadius: 27.5, alignItems: 'center', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                 <img src="images/header/Settings.png" alt="Settings Icon" width={'32.3px'} />
                             </Link>
                         </li>
@@ -123,7 +123,7 @@ export default function Header() {
                         <div className="input-group">
                             <input type="text" id="SearchBar" className="form-control" placeholder="" aria-label="Input group example" aria-describedby="basic-addon1" style={{ paddingLeft: '40px', marginRight: 5, borderRadius: 3 }} />
                         </div>
-                        <button className="btn headerLink mic" type="submit" style={{ backgroundColor: 'rgba(240, 100, 73)', color: "white", width: 50, marginRight: 70, display: 'flex', justifyContent: 'center', alignItems: 'center' }} onClick={() => record()}>
+                        <button className="btn headerLink mic" title="Mic Button" type="submit" style={{ backgroundColor: 'rgba(240, 100, 73)', color: "white", width: 50, marginRight: 70, display: 'flex', justifyContent: 'center', alignItems: 'center' }} onClick={() => record()}>
                             <img src="images/header/Microphone.png" alt="" style={{ zoom: 0.7 }} />
                         </button>
                     </form>
