@@ -11,3 +11,15 @@
 .controllerContainer .LabelScenario{
     margin-left: 3px;
 }
+
+.controllerContainer .hide{
+    display: none;
+}
+
+.controllerContainer .show{
+    display: show;
+}
+
+.controllerContainer .PointerElem{
+    margin-top: 5px;
+}

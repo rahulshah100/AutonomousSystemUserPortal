@@ -100,17 +100,41 @@ export default function Controller() {
             }
         }
 
+        let Severity = document.getElementsByName('Severity')
+        for (let i = 0; i < Severity.length; i++) {
+            if (Severity[i].checked) {
+                Severity = i + 1
+                break
+            }
+        }
+
+        let PointerText = ''
+
+        Array.from(document.getElementsByClassName('PointerElem')).forEach((element) => {
+            PointerText += ` \n${element.value}`
+            element.value = null
+        })
+
         let NewNotifContent = {
             SrNum: NewNotifSrNum,
             Title: document.getElementById('NewNotifTitle').value,
             Desc: document.getElementById('NewNotifDesc').value,
-            Scenario: ScenarioCase
+            Scenario: ScenarioCase,
+            Severity: Severity,
+            Pointer: PointerText
         }
 
         setNotifContent([...NotifContent, NewNotifContent])
 
         document.getElementById('NewNotifDesc').value = ''
         document.getElementById('NewNotifTitle').value = ''
+        document.getElementById('flexRadioDefault1').checked = true
+        document.getElementById('flexRadioDefault4').checked = true
+        document.getElementsByClassName('PointerElem')[0].value = ''
+        Array.from(document.getElementsByClassName('newPointerElem')).forEach((element) => {
+            element.remove()
+        })
+        addHidePointer("Normal")
 
         alert(`New Alert Added Successfully`)
 
@@ -121,6 +145,36 @@ export default function Controller() {
         })
     }
 
+    function addHidePointer(importance) {
+        if (importance === "High") {
+            if (!document.getElementById("DescPointers").classList.contains('show')) {
+                document.getElementById("DescPointers").classList += ' show'
+            }
+            if (document.getElementById("DescPointers").classList.contains('hide')) {
+                document.getElementById("DescPointers").classList.remove('hide')
+            }
+        }
+        if (importance === "Normal") {
+            if (!document.getElementById("DescPointers").classList.contains('hide')) {
+                document.getElementById("DescPointers").classList += ' hide'
+            }
+            if (document.getElementById("DescPointers").classList.contains('show')) {
+                document.getElementById("DescPointers").classList.remove('show')
+            }
+            Array.from(document.getElementsByClassName('newPointerElem')).forEach((element) => {
+                element.remove()
+            })
+            document.getElementsByClassName('PointerElem')[0].value = ''
+        }
+    }
+
+    function AddPointer() {
+        let newElem = document.createElement('input')
+        newElem.setAttribute('type', 'text')
+        newElem.setAttribute('class', "form-control")
+        newElem.classList += '  PointerElem newPointerElem'
+        document.getElementById('PointerElems').appendChild(newElem)
+    }
 
     const clearNotifHistory = async () => {
         let confirmClear = window.confirm("Do you want to Clear entire Notification History?")
@@ -133,11 +187,8 @@ export default function Controller() {
     function ChangeScenario() {
         // Updating variables which are declared using useState, happens Asynchronously. So here, although the function was executed but it was ran on the previous values of useState variables. By using setTimeout, which is an Asynchronous function, this problem is solved.
         setTimeout(() => {
-            console.log("clicked")
             if (window.location.href.substring(window.location.href.lastIndexOf('#') + 1) === "Scenario1") {
-                console.log('in1')
                 setCurrentScenarioPage(1)
-                console.log('in12')
 
                 if (!document.getElementsByClassName('Scenariobtn')[2].classList.contains('btn-light')) {
                     document.getElementsByClassName('Scenariobtn')[2].classList += ' btn-light'
@@ -152,10 +203,7 @@ export default function Controller() {
                 }
             }
             if (window.location.href.substring(window.location.href.lastIndexOf('#') + 1) === "Scenario2") {
-                console.log('in2')
                 setCurrentScenarioPage(2)
-                console.log('in22')
-
                 if (!document.getElementsByClassName('Scenariobtn')[1].classList.contains('btn-light')) {
                     document.getElementsByClassName('Scenariobtn')[1].classList += ' btn-light'
                 }
@@ -169,9 +217,7 @@ export default function Controller() {
                 }
             }
             if (window.location.href.substring(window.location.href.lastIndexOf('#') + 1) === "Scenario3") {
-                console.log('in3')
                 setCurrentScenarioPage(3)
-                console.log('in32')
 
                 if (!document.getElementsByClassName('Scenariobtn')[0].classList.contains('btn-light')) {
                     document.getElementsByClassName('Scenariobtn')[0].classList += ' btn-light'
@@ -185,6 +231,15 @@ export default function Controller() {
                     document.getElementsByClassName('Scenariobtn')[1].classList += ' btn-secondary'
                 }
             }
+        })
+    }
+
+    let counter = 0
+
+    function addDesc(theDesc) {
+        setTimeout(() => {
+            Array.from(document.getElementsByClassName('DescContainer'))[counter].innerHTML = theDesc
+            counter += 1
         })
     }
 
@@ -210,9 +265,16 @@ export default function Controller() {
                                     <img src="images/Notif.png" alt="Notification" />
                                 </div>
                                 <span style={{ minWidth: '96%' }}>
-                                    <button type="button" className="btn btn-warning" title="Shows this Notification on User's Screen" style={{ zoom: 0.7, float: 'right' }} onClick={() => ShowNotifOnUserScreen(notif.SrNum)}><b> Show</b></button>
-                                    <h4 style={{ fontSize: 15, color: 'rgb(40,116,149)' }}><b> {notif.Title} </b></h4>
-                                    <p>{notif.Desc}</p>
+                                    <button type="button" className="btn btn-warning" title="Shows this Notification on User's Screen" style={{ zoom: 0.7, float: 'right' }} onClick={() => ShowNotifOnUserScreen(notif.SrNum)}>
+                                        <b> Show</b>
+                                    </button>
+                                    <h4 style={{ fontSize: 15, color: 'rgb(40,116,149)' }}>
+                                        <b> {notif.Title} </b>
+                                    </h4>
+                                    <p className="DescContainer" style={{ whiteSpace: 'pre-wrap', 'fontFamily': 'Arial' }}>
+                                        {addDesc(notif.Desc)}
+                                        {console.log("its heer", notif.Desc)}
+                                    </p>
                                     <button type="button" title="Delete this Notification" className="btn btn-danger" style={{ border: '1px solid black', zoom: 0.7, float: 'right', position: 'relative', top: '15%', right: '0%' }} onClick={() => DelNotification(notif.SrNum)}><b> Delete</b></button>
                                 </span>
                             </div>
@@ -251,12 +313,35 @@ export default function Controller() {
                             <label className="LabelScenario" htmlFor="flexRadioDefault3">
                                 Scenario 3
                             </label>
+                        </div><br />
+
+                        <div>
+                            <label htmlFor="NewNotifDesc" className="form-label"><b>Severity:</b></label>
+                            <div className="RadioButtonScenario">
+                                <input className="form-check-input" type="radio" name="Severity" value={4} id="flexRadioDefault4" defaultChecked onClick={() => { addHidePointer("Normal") }} />
+                                <label className="LabelScenario" htmlFor="flexRadioDefault4">
+                                    Normal
+                                </label>
+                            </div>
+                            <div className="RadioButtonScenario">
+                                <input className="form-check-input" type="radio" name="Severity" value={5} id="flexRadioDefault5" onClick={() => { addHidePointer("High") }} />
+                                <label className="LabelScenario" htmlFor="flexRadioDefault5">
+                                    High
+                                </label>
+                            </div><br />
+                        </div>
+                        <div id="DescPointers" className='hide'>
+                            <b style={{ marginTop: '6px', display: 'block' }}> Add points to description (Optional):</b>
+                            <div id="PointerElems" style={{ fontSize: 13, minWidth: '90%', display: 'inline-block' }} >
+                                <input type="text" className="form-control  PointerElem" />
+                            </div>
+                            <button type="button" className="btn btn-primary" style={{ float: 'right' }} onClick={() => { AddPointer() }}>+</button>
                         </div>
 
                         <button type="submit" title="Add this Notification" className="btn btn-success" style={{ border: '1px solid black', zoom: 0.8, float: 'right', position: 'relative', top: 30, left: 40 }}>Add</button>
                     </span>
                 </div>
-            </form><br />
+            </form ><br />
 
 
             <hr />
@@ -264,6 +349,6 @@ export default function Controller() {
                 <button type="button" title="Clears the entire Notification History" className="btn btn-primary" style={{ marginLeft: 10, zoom: 0.9 }} onClick={() => { clearNotifHistory() }}> Clear</button>
             </h2>
             <hr />
-        </div>
+        </div >
     )
 }
