@@ -3,7 +3,7 @@
 }
 
 .NotifShow {
-    display: block !important;
+    display: inline-flex !important;
 }
 
 .navbar input {

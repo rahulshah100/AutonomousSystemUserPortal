@@ -109,11 +109,16 @@ export default function Controller() {
         }
 
         let PointerText = ''
-
-        Array.from(document.getElementsByClassName('PointerElem')).forEach((element) => {
-            PointerText += ` \n${element.value}`
-            element.value = null
-        })
+        let tempCounter = 1
+        if (Severity === 2) {
+            Array.from(document.getElementsByClassName('PointerElem')).forEach((element) => {
+                if (element.value.length > 0) {
+                    PointerText += ` <div><span style="display:inline-flex; padding:10px; margin-left:-27px; margin-bottom:5px; color:white; height: 25px; text-align:center; justify-content: center; align-items: center; width: 25px; border-radius:50%; background:#5BC3EB;">${tempCounter}</span> ${element.value}</div>`
+                    element.value = null
+                    tempCounter += 1
+                }
+            })
+        }
 
         let NewNotifContent = {
             SrNum: NewNotifSrNum,
@@ -235,7 +240,6 @@ export default function Controller() {
     }
 
     let counter = 0
-
     function addDesc(theDesc) {
         setTimeout(() => {
             Array.from(document.getElementsByClassName('DescContainer'))[counter].innerHTML = theDesc
@@ -243,9 +247,24 @@ export default function Controller() {
         })
     }
 
+    let counter2 = 0
+    function addPointerElem(theNotif) {
+        setTimeout(() => {
+            if (theNotif.Pointer) {
+                Array.from(document.getElementsByClassName('PointersCointainer'))[counter - 1].innerHTML = theNotif.Pointer
+            }
+
+            if (theNotif.Severity === 2) {
+                Array.from(document.getElementsByClassName('PointersCointainer'))[counter - 1].parentElement.parentElement.style.border = "4px dashed rgb(240, 100, 73)"
+            }
+        })
+        counter2 += 1
+    }
+
+
     return (
-        <div style={{ margin: '20px 30px' }} onLoad={() => { document.title = "Notification Controller" }} className="controllerContainer">
-            <hr /><h2>
+        <div style={{ margin: '20px 30px' }} onLoad={() => { document.title = "Notification Controller" }} className="controllerContainer"><hr />
+            <h2>
                 Click on
                 <button type="button" className="btn btn-warning" style={{ zoom: 0.7, margin: '0px 8px' }}>
                     <b> Show </b>
@@ -254,13 +273,15 @@ export default function Controller() {
                 <Link className="ScenarioLink" to="#Scenario3"><button type="submit" title="Scenario 3" className="Scenariobtn btn btn-secondary" style={{ float: 'right', marginLeft: 8, border: '1px solid black' }} onClick={() => ChangeScenario()}>Scenario 3</button></Link>
                 <Link className="ScenarioLink" to="#Scenario2"> <button type="submit" title="Scenario 2" className="Scenariobtn btn btn-secondary" style={{ float: 'right', marginLeft: 8, border: '1px solid black' }} onClick={() => ChangeScenario()}> Scenario 2 </button></Link>
                 <Link className="ScenarioLink" to="#Scenario1"><button type="submit" title="Scenario 1" className="Scenariobtn btn btn-light" style={{ float: 'right', marginLeft: 8, border: '1px solid black' }} onClick={() => ChangeScenario()}> Scenario 1 </button></Link>
-            </h2><hr />
+            </h2>
+            <hr />
 
-            <div className="list-notifs" style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
-                {NotifContent.length === 0 ? 'No Notifications' :
+            <div className="list-notifs" style={{ }}>            
+                <div style={{opacity:0.5, float:'right', borderTop:'2px solid hsla(70, 100%, 30%, 0.5)', borderBottom:'2px solid hsla(70, 100%, 30%, 0.5)', padding:12}}>Notifications with High Severity are shown with Dashed border</div>
+                {NotifContent.length === 0 ? 'No Notifications Found' :
                     NotifContent.map((notif) => {
                         if (notif.Scenario === CurrentScenarioPage) {
-                            return <div key={notif.SrNum} className="alert alert-success alert-dismissible fade show" role="alert" style={{ backgroundColor: 'white', border: '2px solid rgba(240, 100, 73)', fontSize: 13, width: '50%', display: 'flex', paddingTop: 10, paddingBottom: 0, paddingRight: 12, paddingLeft: 10, color: 'black', fontFamily: 'Arial', marginBottom: 35, marginLeft: 10, display: 'flex', flexWrap: 'nowrap', flexDirection: 'row', justifyContent: 'center' }}>
+                            return <div key={notif.SrNum} className="availableAlerts alert alert-success alert-dismissible fade show" role="alert" style={{ backgroundColor: 'white', border: '2px solid rgba(240, 100, 73)', fontSize: 13, width: '50%', display: 'flex', paddingTop: 10, paddingBottom: 0, paddingRight: 12, paddingLeft: 10, color: 'black', fontFamily: 'Arial', marginBottom: 35, marginLeft: 10, display: 'flex', flexWrap: 'nowrap', flexDirection: 'row', justifyContent: 'center' }}>
                                 <div style={{ display: 'inline-flex', maxHeight: '25px', minWidth: '21px', padding: '3px', background: '#36382E', borderRadius: '6px', alignItems: 'center', justifyContent: 'center', marginRight: '5px' }}>
                                     <img src="images/Notif.png" alt="Notification" />
                                 </div>
@@ -271,11 +292,15 @@ export default function Controller() {
                                     <h4 style={{ fontSize: 15, color: 'rgb(40,116,149)' }}>
                                         <b> {notif.Title} </b>
                                     </h4>
-                                    <p className="DescContainer" style={{ whiteSpace: 'pre-wrap', 'fontFamily': 'Arial' }}>
+                                    <p className="DescContainer" style={{ whiteSpace: 'pre-wrap', 'fontFamily': 'Arial', marginBottom: '0px' }}>
                                         {addDesc(notif.Desc)}
-                                        {console.log("its heer", notif.Desc)}
                                     </p>
-                                    <button type="button" title="Delete this Notification" className="btn btn-danger" style={{ border: '1px solid black', zoom: 0.7, float: 'right', position: 'relative', top: '15%', right: '0%' }} onClick={() => DelNotification(notif.SrNum)}><b> Delete</b></button>
+                                    <p className='PointersCointainer' style={{ marginBottom: 0 }}>
+                                        {addPointerElem(notif)}
+                                    </p>
+                                    <button type="button" title="Delete this Notification" className="btn btn-danger" style={{ border: '1px solid black', zoom: 0.7, float: 'right', position: 'relative', bottom: '-6%', right: '0%' }} onClick={() => DelNotification(notif.SrNum)}>
+                                        <b> Delete</b>
+                                    </button>
                                 </span>
                             </div>
                         }
@@ -338,7 +363,7 @@ export default function Controller() {
                             <button type="button" className="btn btn-primary" style={{ float: 'right' }} onClick={() => { AddPointer() }}>+</button>
                         </div>
 
-                        <button type="submit" title="Add this Notification" className="btn btn-success" style={{ border: '1px solid black', zoom: 0.8, float: 'right', position: 'relative', top: 30, left: 40 }}>Add</button>
+                        <button type="submit" title="Add this Notification" className="btn btn-success" style={{ border: '1px solid black', zoom: 0.8, float: 'right', position: 'relative', bottom: '-6%', right: '-5%' }}>Add</button>
                     </span>
                 </div>
             </form ><br />
