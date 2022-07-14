@@ -46,7 +46,7 @@ export default function Header() {
                 }
             };
             getNotifAdded();
-        }, 500000000)
+        }, 50000000000)
     }, [NotifToBeShown]);
 
     useEffect(() => {
@@ -61,11 +61,10 @@ export default function Header() {
     function openNotif() {
         document.getElementById('NotificationDIV').classList.remove('NotifHide')
         document.getElementById('NotificationDIV').classList += ' NotifShow'
-        // if (document.getElementsByClassName('NotifShowMore')[0].contains('NotifHide')) {
-        //     document.getElementsByClassName('NotifShowMore')[0].remove('NotifHide');
-        // }
-        // document.getElementsByClassName('DescContainer')[0].classList += ' NotifHide';
-        // document.getElementsByClassName('PointersContainer')[0].classList += ' NotifHide';
+
+        document.getElementsByClassName('NotifShowMore')[0].classList.remove('NotifHide');
+        document.getElementsByClassName('DescContainer')[0].classList += ' NotifHide';
+        document.getElementsByClassName('PointersContainer')[0].classList += ' NotifHide';
     }
 
     function record() {
@@ -93,7 +92,7 @@ export default function Header() {
             if (theNotif.Pointer) {
                 Array.from(document.getElementsByClassName('PointersContainer'))[counter - 1].innerHTML = theNotif.Pointer
                 console.log(theNotif.Pointer)
-                theNotif.Pointer.addEventListener("click", HighPriorityNotifs())
+                // theNotif.Pointer.addEventListener("click", HighPriorityNotifs())
             } else {
                 Array.from(document.getElementsByClassName('PointersContainer'))[counter - 1].innerHTML = ''
             }

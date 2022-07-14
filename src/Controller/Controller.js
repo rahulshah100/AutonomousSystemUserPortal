@@ -100,17 +100,17 @@ export default function Controller() {
             }
         }
 
-        let Severity = document.getElementsByName('Severity')
-        for (let i = 0; i < Severity.length; i++) {
-            if (Severity[i].checked) {
-                Severity = i + 1
+        let Criticality = document.getElementsByName('Criticality')
+        for (let i = 0; i < Criticality.length; i++) {
+            if (Criticality[i].checked) {
+                Criticality = i + 1
                 break
             }
         }
 
         let PointerText = ''
         let tempCounter = 1
-        if (Severity === 2) {
+        if (Criticality === 2) {
             Array.from(document.getElementsByClassName('PointerElem')).forEach((element) => {
                 if (element.value.length > 0) {
                     PointerText += ` <div><span style="display:inline-flex; padding:10px; margin-left:-27px; margin-bottom:5px; color:white; height: 25px; text-align:center; justify-content: center; align-items: center; width: 25px; border-radius:50%; background:#5BC3EB;">${tempCounter}</span> ${element.value}</div>`
@@ -125,7 +125,7 @@ export default function Controller() {
             Title: document.getElementById('NewNotifTitle').value,
             Desc: document.getElementById('NewNotifDesc').value,
             Scenario: ScenarioCase,
-            Severity: Severity,
+            Criticality: Criticality,
             Pointer: PointerText
         }
 
@@ -139,10 +139,10 @@ export default function Controller() {
         Array.from(document.getElementsByClassName('newPointerElem')).forEach((element) => {
             element.remove()
         })
-        addHidePointer("Normal")
+        addHidePointer("Low")
 
         alert(`New Alert Added Successfully`)
-
+        
         setTimeout(() => {
             let AlteredNotifContent = localStorage.NotifContent
             // console.log(AlteredNotifContent)
@@ -159,7 +159,7 @@ export default function Controller() {
                 document.getElementById("DescPointers").classList.remove('hide')
             }
         }
-        if (importance === "Normal") {
+        if (importance === "Low") {
             if (!document.getElementById("DescPointers").classList.contains('hide')) {
                 document.getElementById("DescPointers").classList += ' hide'
             }
@@ -254,7 +254,7 @@ export default function Controller() {
                 Array.from(document.getElementsByClassName('PointersCointainer'))[counter - 1].innerHTML = theNotif.Pointer
             }
 
-            if (theNotif.Severity === 2) {
+            if (theNotif.Criticality === 2) {
                 Array.from(document.getElementsByClassName('PointersCointainer'))[counter - 1].parentElement.parentElement.style.border = "4px dashed rgb(240, 100, 73)"
             }
         })
@@ -277,7 +277,7 @@ export default function Controller() {
             <hr />
 
             <div className="list-notifs" style={{ }}>            
-                <div style={{opacity:0.5, float:'right', borderTop:'2px solid hsla(70, 100%, 30%, 0.5)', borderBottom:'2px solid hsla(70, 100%, 30%, 0.5)', padding:12}}>Notifications with High Severity are shown with Dashed border</div>
+                <div style={{opacity:0.5, float:'right', borderTop:'2px solid hsla(70, 100%, 30%, 0.5)', borderBottom:'2px solid hsla(70, 100%, 30%, 0.5)', padding:12, zoom:0.9}}>Notifications with High Criticality are shown with Dashed border</div>
                 {NotifContent.length === 0 ? 'No Notifications Found' :
                     NotifContent.map((notif) => {
                         if (notif.Scenario === CurrentScenarioPage) {
@@ -341,15 +341,15 @@ export default function Controller() {
                         </div><br />
 
                         <div>
-                            <label htmlFor="NewNotifDesc" className="form-label"><b>Severity:</b></label>
+                            <label htmlFor="NewNotifDesc" className="form-label"><b>Criticality:</b></label>
                             <div className="RadioButtonScenario">
-                                <input className="form-check-input" type="radio" name="Severity" value={4} id="flexRadioDefault4" defaultChecked onClick={() => { addHidePointer("Normal") }} />
+                                <input className="form-check-input" type="radio" name="Criticality" value={4} id="flexRadioDefault4" defaultChecked onClick={() => { addHidePointer("Low") }} />
                                 <label className="LabelScenario" htmlFor="flexRadioDefault4">
-                                    Normal
+                                    Low
                                 </label>
                             </div>
                             <div className="RadioButtonScenario">
-                                <input className="form-check-input" type="radio" name="Severity" value={5} id="flexRadioDefault5" onClick={() => { addHidePointer("High") }} />
+                                <input className="form-check-input" type="radio" name="Criticality" value={5} id="flexRadioDefault5" onClick={() => { addHidePointer("High") }} />
                                 <label className="LabelScenario" htmlFor="flexRadioDefault5">
                                     High
                                 </label>

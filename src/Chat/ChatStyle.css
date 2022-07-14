@@ -1,0 +1,151 @@
+.chatContainer {
+    scroll-snap-type: y;
+}
+
+.chatContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.chatContainer #Text-Response {
+    display: grid;
+    grid-template-columns: 3% 97%;
+}
+
+.chatContainer button:hover {
+    background-color: #008296 !important;
+    color: white !important;
+}
+
+.chatContainer button:active {
+    background-color: #075d6b !important;
+}
+
+.chatContainer .ChatImage {
+    margin-top: 15px;
+}
+
+.chatContainer img {
+    width: 30px;
+}
+
+.chatContainer .TextChatMsg {
+    border-radius: 0.27rem 1.6rem 1.6rem 1.6rem;
+    background-color: white;
+    color: black;
+    padding: 15px 20px;
+    max-width: fit-content;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.chatContainer .ShowTimeText {
+    color: #879596;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    font-size: 12px;
+}
+
+.chatContainer .responseBtn {
+    background-color: transparent;
+    color: #008296;
+    border: 2.5px solid #008296;
+    border-radius: 25px;
+    margin-right: 5px;
+    margin-left: 5px;
+    padding: 5px 10px;
+}
+
+.chatContainer .ShowTimeResponse {
+    color: #879596;
+    min-width: fit-content;
+    text-align: right;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    float: right;
+    position: relative;
+    display: block;
+}
+
+
+.chatContainer .ResponseChatMsg {
+    padding: 15px 20px;
+    border-radius: 1.6rem 1.6rem 0.27rem 1.6rem;
+    background-color: #008296;
+    color: white;
+    margin-bottom: 5px;
+    min-width: fit-content;
+}
+
+.chatContainer .RightTransition {
+    animation-name: rightShift;
+    animation-duration: 2s;
+    margin-left: 0px;   
+}
+
+.chatContainer #Text-Response {
+    text-align: center;
+    width: 100%;
+}
+
+.chatContainer #ButtonBar {
+    position: absolute;
+    bottom: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+@keyframes rightShift {
+    from {
+        margin-left: -100%;
+    }
+
+    to {
+        margin-left: 0%;
+    }
+}
+
+.chatContainer .unblurTransition {
+    animation-name: unblur;
+    animation-duration: 3s;
+}
+
+@keyframes unblur {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.chatContainer .unblurDelayedTransition {
+    animation-name: unblur;
+    animation-duration: 3s;
+    animation-delay: 2s;
+    animation-fill-mode: both;
+}
+
+.chatContainer .DownShiftTransition {
+    animation-name: DownShift;
+    animation-duration: 1s;
+    animation-delay: 2s;
+    animation-fill-mode: both;
+    margin-bottom: 0px;
+}
+
+@keyframes DownShift {
+    from {
+        margin-bottom: 2%;
+        opacity: 0;
+    }
+
+    to {
+        margin-bottom: 0px;
+        opacity: 1;
+    }
+}

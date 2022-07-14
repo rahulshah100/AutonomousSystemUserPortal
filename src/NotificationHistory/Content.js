@@ -14,7 +14,7 @@ export default function Content() {
 
     // Initializing setState Variables by fetching values from firebase
     useEffect(() => {
-        setInterval(() => {
+        setTimeout(() => {
             const getNotifHistory = async () => {
                 const data = await getDocs(NotifHistory_CollectionRef);
                 let a = data.docs[0]._document.data.value;
@@ -26,8 +26,16 @@ export default function Content() {
                 setLoading(false)
             };
             getNotifHistory();
-        }, 1000)
+        })
     }, []);
+
+    function addPointerElem(theNotif) {
+        setTimeout(() => {
+            if (theNotif.Pointer != undefined) {
+                Array.from(document.getElementsByClassName(theNotif.SrNum)).forEach((element) => { element.innerHTML = theNotif.Pointer })
+            }
+        })
+    }
 
     return (
         <div style={{ height: '40.2vw', width: '100%', justifyContent: 'center', alignItems: 'center', padding: 15, overflow: 'auto' }}>
@@ -38,13 +46,20 @@ export default function Content() {
                 <div className="list-notifs">
                     {NotifHistory && NotifHistory.length === 0 && Loading == false ? <div style={{ textAlign: 'center' }}>No Notifications</div> :
                         NotifHistory.map((notif) => {
-                            return <div key={count += 1} className="alert alert-success alert-dismissible fade show" role="alert" style={{ backgroundColor: 'white', border: '2px solid rgba(240, 100, 73)', fontSize: 13, width: '50%', display: 'flex', flexDirection: 'row', paddingTop: 10, paddingBottom: 0, paddingRight: 12, paddingLeft: 10, color: 'black', fontFamily: 'Arial', marginRight: 25, marginBottom: 35, flexBasis: '50%', marginLeft: '25%' }}>
+                            return <div key={count += 1} className="MainNotif alert alert-success alert-dismissible fade show" role="alert" style={{ backgroundColor: 'white', border: '2px solid rgba(240, 100, 73)', fontSize: 13, width: '50%', display: 'flex', flexDirection: 'row', paddingTop: 10, paddingBottom: 0, paddingRight: 12, paddingLeft: 10, color: 'black', fontFamily: 'Arial', marginRight: 25, marginBottom: 35, flexBasis: '50%', marginLeft: '25%' }}>
                                 <div style={{ display: 'inline-flex', maxHeight: '25px', minWidth: '21px', padding: '3px', background: '#36382E', borderRadius: '6px', alignItems: 'center', justifyContent: 'center', marginRight: '5px' }}>
                                     <img src="images/Notif.png" alt="Notification" />
                                 </div>
                                 <span>
-                                    <h4 style={{ color: 'blue', fontSize: 15, color: 'rgb(40,116,149)', paddingTop: '3px' }}><b> {notif["Title"]} </b></h4>
-                                    <p>{notif["Desc"]}</p>
+                                    <h4 style={{ color: 'blue', fontSize: 15, color: 'rgb(40,116,149)', paddingTop: '3px' }}>
+                                        <b> {notif["Title"]} </b>
+                                    </h4>
+                                    <p className="DescContainer" style={{ whiteSpace: 'pre-wrap', 'fontFamily': 'Arial', marginBottom: '0px' }}>
+                                        {notif["Desc"]}
+                                    </p>
+                                    <p className={notif.SrNum}>
+                                        {addPointerElem(notif)}
+                                    </p>
                                 </span>
                             </div>
                         })}
