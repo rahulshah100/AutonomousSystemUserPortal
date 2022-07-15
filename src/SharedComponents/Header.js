@@ -46,7 +46,7 @@ export default function Header() {
                 }
             };
             getNotifAdded();
-        }, 50000000000)
+        }, 50000000000000000000)
     }, [NotifToBeShown]);
 
     useEffect(() => {
@@ -137,8 +137,8 @@ export default function Header() {
 
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item headerLink" style={{ background: '#F06449', borderBottomLeftRadius: 14, paddingLeft: '16px', paddingRight: '20px', marginRight: '3px' }}>
-                            <Link title='Home' className="nav-link" aria-current="page" to="#" >
-                                <img src="images/header/Siren.png" alt="Home Button Image" width={'47px'} />
+                            <Link title='Call Emergency' className="nav-link" aria-current="page" to="#" onClick={()=>{window.open('tel:911','_self')}}>
+                                <img src="images/header/Siren.png" alt="Call Emergency Services Button Image" width={'47px'} />
                             </Link>
                         </li>
                         <li className="nav-item headerLink" style={{ backgroundColor: '#45473A', margin: '4px 3px', padding: 0 }}>
@@ -147,25 +147,25 @@ export default function Header() {
                             </Link>
                         </li>
                         <li className="nav-item headerLink" style={{ backgroundColor: '#45473A', margin: '4px 3px' }}>
-                            <Link title='Help' className="nav-link" to="#" style={{ padding: '0px !important', margin: '0px 13px', minWidth: '65%', minHeight: '80%', outline: '2px solid white', borderRadius: 27.5, alignItems: 'center', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <Link title='Help' className="nav-link" to="/Help" style={{ padding: '0px !important', margin: '0px 13px', minWidth: '65%', minHeight: '80%', outline: '2px solid white', borderRadius: 27.5, alignItems: 'center', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                 <img src="images/header/Help.png" alt="Settings Icon" width={'15px'} />
                             </Link>
                         </li>
                         <li className="nav-item headerLink" style={{ backgroundColor: '#45473A', margin: '4px 3px' }}>
-                            <Link title="Settings" className="nav-link" to="#" style={{ padding: '0px !important', margin: '0px 13px', minWidth: '68%', minHeight: '80%', outline: '2px solid white', borderRadius: 27.5, alignItems: 'center', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <Link title="Settings" className="nav-link" to="/Setting" style={{ padding: '0px !important', margin: '0px 13px', minWidth: '68%', minHeight: '80%', outline: '2px solid white', borderRadius: 27.5, alignItems: 'center', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                 <img src="images/header/Settings.png" alt="Settings Icon" width={'32.3px'} />
                             </Link>
                         </li>
                     </ul>
 
-                    <form className="d-flex" role="search" onSubmit={(e) => { e.preventDefault() }}>
-                        <div className="input-group">
+                    {/* <form className="d-flex" role="search" onSubmit={(e) => { e.preventDefault() }}> */}
+                    {/* <div className="input-group">
                             <input type="text" id="SearchBar" className="form-control" placeholder="" aria-label="Input group example" aria-describedby="basic-addon1" style={{ paddingLeft: '40px', marginRight: 5, borderRadius: 3 }} />
-                        </div>
-                        <button className="btn headerLink mic" title="Mic Button" type="submit" style={{ backgroundColor: 'rgba(240, 100, 73)', color: "white", width: 50, marginRight: 70, display: 'flex', justifyContent: 'center', alignItems: 'center' }} onClick={() => record()}>
+                        </div> */}
+                    {/* <button className="btn headerLink mic" title="Mic Button" type="submit" style={{ backgroundColor: 'rgba(240, 100, 73)', color: "white", width: 50, marginRight: 70, display: 'flex', justifyContent: 'center', alignItems: 'center' }} onClick={() => record()}>
                             <img src="images/header/Microphone.png" alt="" style={{ zoom: 0.7 }} />
-                        </button>
-                    </form>
+                        </button> */}
+                    {/* </form> */}
                 </div>
             </div>
         </nav >

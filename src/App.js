@@ -4,6 +4,8 @@ import CameraView from './CameraView/CameraView';
 import Map from './Map/Map';
 import Chat from './Chat/Chat';
 import NotificationHistory from './NotificationHistory/NotificationHistory';
+import Help from './Help/Help';
+import Setting from './Setting/Setting';
 import Controller from './Controller/Controller';
 import PageNotFound from './PageNotFound/PageNotFound';
 
@@ -20,10 +22,12 @@ function App() {
     <Router>
       <Routes>
         <Route exact path='/' element={<Home />} />
-        <Route path='/CameraView' element={<CameraView />} />
-        <Route path='/Map' element={<Map />} />
-        <Route path='/Chat' element={<Chat />} />
+        <Route exact path='/CameraView' element={<CameraView />} />
+        <Route exact path='/Map' element={<Map />} />
+        <Route exact path='/Chat' element={<Chat />} />
         <Route exact path='/NotificationHistory' element={<NotificationHistory />} />
+        <Route exact path='/Help' element={<Help />} />
+        <Route exact path='/Setting' element={<Setting />} />
         <Route exact path='/Controller' element={<Controller />} />
         <Route path='*' element={<PageNotFound />} />
       </Routes>

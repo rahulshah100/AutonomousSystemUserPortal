@@ -6,7 +6,7 @@ export default function Content() {
   let BotResponses
   let HumanResponses
 
-  useEffect((event) => {
+  useEffect(() => {
     BotResponses = [
       { precursor: 'Yes', followup: ['Glad we could help', 'Feel free to revisit this Page, if you have any further questions'] },
       { precursor: 'No', followup: ['Okay', 'Please select amongst the below options, according to your question'] },
