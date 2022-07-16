@@ -37,27 +37,15 @@ export default function Content() {
             }
             count += 1
         }, 750)
-
-        // Changing the loading icon to Done        
-
     })
 
+    // Change the Loading Icon to Done for each Monitoring Item
     function ChangeLoadingIconAsDone() {
         let count2 = 0
-        Array.from(document.getElementsByClassName('MonitoredItemLoading')).forEach((elem)=>{
+        Array.from(document.getElementsByClassName('MonitoredItemLoading')).forEach((elem) => {
             elem.remove()
-            document.getElementsByClassName('MonitoredItemDone')[count2].classList="MonitoredItemDoneOk"
+            document.getElementsByClassName('MonitoredItemDone')[count2].classList = "MonitoredItemDoneOk"
         })
-            // let LoadingtoDone = setInterval(() => {
-            //     console.log(count2, document.getElementsByClassName('MonitoredItemLoading').length)
-            //     document.getElementsByClassName('MonitoredItemLoading')[count2].remove()
-            //     document.getElementsByClassName('MonitoredItemDone')[count2].classList=""
-            //     if (count2 === document.getElementsByClassName('MonitoredItemLoading').length - 1) {
-            //         clearInterval(LoadingtoDone);
-            //     }
-            //     console.log("interval notcleared")
-            //     count2 += 1
-            // }, 700)
     }
 
     return (

@@ -1,3 +1,33 @@
 .containerSetting{
-    background-color: aqua;
+    padding: 20px 20px 20px 20px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;    
+}
+
+.containerSetting .title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 60px;
+}
+
+.containerSetting svg{
+    margin-right: 5px;
+}
+
+.containerSetting .MainList span{
+    border-bottom: 3px solid #d2d2d2;
+    text-align: left;
+    display: inline-block;
+    min-width: 250px;
+    margin-right: 10px;
+    font-size: 22px;
+    font-weight: 600;
+    opacity: 0.8;
+}
+
+.containerSetting li button{
+    display: inline-block;
+    margin-left: 20px;
+    zoom: 0.8;
 }

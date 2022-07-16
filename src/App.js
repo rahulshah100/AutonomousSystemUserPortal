@@ -6,14 +6,14 @@ import Chat from './Chat/Chat';
 import NotificationHistory from './NotificationHistory/NotificationHistory';
 import Help from './Help/Help';
 import Setting from './Setting/Setting';
+import SettingItem from './Setting/SettingItem';
+import SettingSubItem from './Setting/SettingSubItem';
 import Controller from './Controller/Controller';
 import PageNotFound from './PageNotFound/PageNotFound';
 
 import {
   BrowserRouter as Router,
-  Switch,
   Route,
-  Link,
   Routes
 } from "react-router-dom";
 
@@ -28,6 +28,8 @@ function App() {
         <Route exact path='/NotificationHistory' element={<NotificationHistory />} />
         <Route exact path='/Help' element={<Help />} />
         <Route exact path='/Setting' element={<Setting />} />
+        <Route exact path='/Setting/Item' element={<SettingItem />} />
+        <Route exact path='/Setting/Accessibility/Item' element={<SettingSubItem />} />
         <Route exact path='/Controller' element={<Controller />} />
         <Route path='*' element={<PageNotFound />} />
       </Routes>

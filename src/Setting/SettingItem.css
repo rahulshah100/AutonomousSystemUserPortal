@@ -1,0 +1,113 @@
+.containerSettingItem {
+    padding: 20px 0px 0px 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-y: scroll;
+    height: 550px;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.containerSettingItem::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.containerSettingItem {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.containerSettingItem .title {
+    display: flex;
+    align-items: center;
+}
+
+.containerSettingItem svg {
+    margin-right: 10px;
+}
+
+.containerSettingItem .SubList {
+    list-style-type: lower-alpha;
+    text-align: left;
+}
+
+.containerSettingItem .SubListLevel2 {
+    list-style-type: upper-roman;
+}
+
+.containerSettingItem .SubListLevel3 {
+    list-style-type: lower-roman;
+}
+
+.containerSettingItem .closed {
+    display: none;
+}
+
+.containerSettingItem ul {
+    margin-bottom: 20px !important;
+}
+
+.containerSettingItem li{
+    margin-bottom: 10px;
+    zoom: 1.2;
+}
+
+.containerSettingItem .GoBackLink {
+    position: absolute;
+    bottom: 20px;
+    left: 73%;
+    display: flex;
+}
+
+/* Sliders */
+.containerSettingItem input[type="checkbox"]{
+    cursor: pointer;
+    margin-left: 20px;
+    -webkit-appearance: none;
+    position: relative;
+    background-color: rgb(198, 193, 193);
+    width: 50px;
+    height: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+    zoom: 0.6;    
+}
+
+.containerSettingItem input[type="checkbox"]::before{
+    content:"";
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    left: 0;
+    background-color: rgb(125, 125, 125);
+    border-radius: 10px;
+    transform: scale(1.2);
+    transition: 0.7s ease all;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(27, 56, 187, 0.06);
+}
+
+.containerSettingItem input:checked[type="checkbox"]::before{
+    background-color: #0d6efd;
+    left: 41px;
+}
+
+.containerSettingItem input:checked[type="checkbox"]{
+    background-color: rgb(198, 231, 246, 1);    
+}
+
+/* Range Slider */
+.containerSettingItem input[type="range"]{
+    margin-left:15px
+}
+
+/* RadioButtons */
+.containerSettingItem input[type="radio"]{
+    margin-left: 12px;
+    margin-right: 2px;
+    cursor: pointer;
+}
+
+.containerSettingItem label{
+    cursor: pointer;
+}

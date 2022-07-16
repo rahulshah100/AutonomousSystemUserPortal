@@ -46,7 +46,7 @@ export default function Header() {
                 }
             };
             getNotifAdded();
-        }, 50000000000000000000)
+        }, 1000000000000000000000000000000000000)
     }, [NotifToBeShown]);
 
     useEffect(() => {
