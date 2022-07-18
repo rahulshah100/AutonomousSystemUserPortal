@@ -132,17 +132,17 @@ export default function Header() {
                                 <img src="images/header/Siren.png" alt="Call Emergency Services Button Image" width={'47px'} />
                             </Link>
                         </li>
-                        <li className="nav-item headerLink" style={{ backgroundColor: '#45473A', margin: '4px 3px', padding: 0 }} onClick={() => { routeChange('/NotificationHistory') }}>
+                        <li className="nav-item headerLink" style={{ backgroundColor: '#45473A', margin: '4px 3px', padding: 0 }} onClick={() => { routeChange('/AutonomousSystemUserPortal/NotificationHistory') }}>
                             <Link title='Notifications' className="nav-link" to="/NotificationHistory" style={{ padding: '0px !important', margin: 0, minWidth: '65%', minHeight: '80%', border: '2px solid white', borderRadius: 40, alignItems: 'center', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                 <img src="images/header/NotificationBell.png" alt="Notification Icon" width={'26px'} />
                             </Link>
                         </li>
-                        <li className="nav-item headerLink" style={{ backgroundColor: '#45473A', margin: '4px 3px' }} onClick={() => { routeChange('/Help') }}>
+                        <li className="nav-item headerLink" style={{ backgroundColor: '#45473A', margin: '4px 3px' }} onClick={() => { routeChange('/AutonomousSystemUserPortal/Help') }}>
                             <Link title='Help' className="nav-link" to="/Help" style={{ padding: '0px !important', margin: '0px 13px', minWidth: '65%', minHeight: '80%', outline: '2px solid white', borderRadius: 27.5, alignItems: 'center', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                 <img src="images/header/Help.png" alt="Settings Icon" width={'15px'} />
                             </Link>
                         </li>
-                        <li className="nav-item headerLink" style={{ backgroundColor: '#45473A', margin: '4px 3px' }} onClick={() => { routeChange('/Setting') }}>
+                        <li className="nav-item headerLink" style={{ backgroundColor: '#45473A', margin: '4px 3px' }} onClick={() => { routeChange('/AutonomousSystemUserPortal/Setting') }}>
                             <Link title="Settings" className="nav-link" to="/Setting" style={{ padding: '0px !important', margin: '0px 13px', minWidth: '68%', minHeight: '80%', outline: '2px solid white', borderRadius: 27.5, alignItems: 'center', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                 <img src="images/header/Settings.png" alt="Settings Icon" width={'32.3px'} />
                             </Link>

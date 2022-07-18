@@ -21,16 +21,16 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route exact path='/' element={<Home />} />
-        <Route exact path='/CameraView' element={<CameraView />} />
-        <Route exact path='/Map' element={<Map />} />
-        <Route exact path='/Chat' element={<Chat />} />
-        <Route exact path='/NotificationHistory' element={<NotificationHistory />} />
-        <Route exact path='/Help' element={<Help />} />
-        <Route exact path='/Setting' element={<Setting />} />
-        <Route exact path='/Setting/Item' element={<SettingItem />} />
-        <Route exact path='/Setting/Accessibility/Item' element={<SettingSubItem />} />
-        <Route exact path='/Controller' element={<Controller />} />
+        <Route exact path='/AutonomousSystemUserPortal/' element={<Home />} />
+        <Route exact path='/AutonomousSystemUserPortal/CameraView' element={<CameraView />} />
+        <Route exact path='/AutonomousSystemUserPortal/Map' element={<Map />} />
+        <Route exact path='/AutonomousSystemUserPortal/Chat' element={<Chat />} />
+        <Route exact path='/AutonomousSystemUserPortal/NotificationHistory' element={<NotificationHistory />} />
+        <Route exact path='/AutonomousSystemUserPortal/Help' element={<Help />} />
+        <Route exact path='/AutonomousSystemUserPortal/Setting' element={<Setting />} />
+        <Route exact path='/AutonomousSystemUserPortal/Setting/Item' element={<SettingItem />} />
+        <Route exact path='/AutonomousSystemUserPortal/Setting/Accessibility/Item' element={<SettingSubItem />} />
+        <Route exact path='/AutonomousSystemUserPortal/Controller' element={<Controller />} />
         <Route path='*' element={<PageNotFound />} />
       </Routes>
     </Router>
