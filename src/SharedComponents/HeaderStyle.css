@@ -22,3 +22,7 @@
     align-items: center;
     justify-content: center;
 }
+
+.headerContainer li:hover{
+    cursor: pointer !important;
+}

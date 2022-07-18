@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { db } from "../FireBaseConnection/FireBaseConnection";
 import { collection, doc, getDocs, updateDoc } from "firebase/firestore";
 import './HeaderStyle.css'
@@ -13,13 +13,8 @@ export default function Header() {
     const msg = new SpeechSynthesisUtterance()
 
     useEffect(() => {
-        // console.log('\n msg.text, msg.text!=undefined:', msg.text, msg.text!=undefined)
-        // console.log('NotifToBeShown["Title"]', NotifToBeShown["Title"])
-        // console.log('outside')
         if (msg.text != undefined && NotifToBeShown["Title"]) {
-            // console.log("inside")
             msg.text = JSON.stringify(NotifToBeShown["Title"])
-            // console.log('msg-', msg.text)
             window.speechSynthesis.speak(msg)
         }
     }, [msg, NotifToBeShown])
@@ -53,6 +48,14 @@ export default function Header() {
         // console.log(NotifToBeShown["Title"], typeof NotifToBeShown)
     }, [NotifToBeShown]);
 
+
+    // To make li tags capable of redirecting
+    let navigate = useNavigate();
+    const routeChange = (path) => {
+        navigate(path);
+    }
+
+
     function closeNotif() {
         document.getElementById('NotificationDIV').classList.remove('NotifShow')
         document.getElementById('NotificationDIV').classList += ' NotifHide'
@@ -65,17 +68,6 @@ export default function Header() {
         document.getElementsByClassName('NotifShowMore')[0].classList.remove('NotifHide');
         document.getElementsByClassName('DescContainer')[0].classList += ' NotifHide';
         document.getElementsByClassName('PointersContainer')[0].classList += ' NotifHide';
-    }
-
-    function record() {
-        var recognition = new window.webkitSpeechRecognition();
-        recognition.lang = "en-GB";
-
-        recognition.onresult = function (event) {
-            document.getElementById('SearchBar').value = event.results[0][0].transcript;
-        }
-
-        recognition.start();
     }
 
     let counter = 0
@@ -101,7 +93,7 @@ export default function Header() {
     }
 
     function HighPriorityNotifs() {
-        console.log('clicked high prio')
+        console.log('clicked high prior')
     }
 
     function ShowMoreNotifInfo() {
@@ -113,7 +105,6 @@ export default function Header() {
 
     return (
         <nav className="navbar headerContainer navbar-expand-lg bg-dark" style={{ padding: 0, borderBottomLeftRadius: 18, borderBottomRightRadius: 18, zoom: 1.25 }}>
-
             {/* Notifications */}
             <div id="NotificationDIV" className="NotifHide alert alert-success alert-dismissible fade show" role="alert" style={{ zIndex: 1, position: 'absolute', top: 66, backgroundColor: 'white', border: '2px solid rgba(240, 100, 73)', fontSize: 13, width: '50%', left: '25%', paddingTop: 12, paddingBottom: 0, paddingRight: 9, paddingLeft: 10, boxShadow: '-10px 1px 30px black', color: 'black', fontFamily: 'Arial', display: 'inline-flex !important', textAlign: 'top', alignItems: 'top' }}>
                 <div style={{ display: 'inline-flex', maxHeight: '25px', minWidth: '21px', padding: '5px', background: '#36382E', borderRadius: '6px', alignItems: 'center', justifyContent: 'center', marginRight: '3px' }}>
@@ -136,36 +127,27 @@ export default function Header() {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
 
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li className="nav-item headerLink" style={{ background: '#F06449', borderBottomLeftRadius: 14, paddingLeft: '16px', paddingRight: '20px', marginRight: '3px' }}>
-                            <Link title='Call Emergency' className="nav-link" aria-current="page" to="#" onClick={()=>{window.open('tel:911','_self')}}>
+                        <li className="nav-item headerLink" style={{ background: '#F06449', borderBottomLeftRadius: 14, paddingLeft: '16px', paddingRight: '20px', marginRight: '3px' }} onClick={() => { window.open('tel:911', '_self') }}>
+                            <Link title='Call Emergency' className="nav-link" aria-current="page" to="#">
                                 <img src="images/header/Siren.png" alt="Call Emergency Services Button Image" width={'47px'} />
                             </Link>
                         </li>
-                        <li className="nav-item headerLink" style={{ backgroundColor: '#45473A', margin: '4px 3px', padding: 0 }}>
+                        <li className="nav-item headerLink" style={{ backgroundColor: '#45473A', margin: '4px 3px', padding: 0 }} onClick={() => { routeChange('/NotificationHistory') }}>
                             <Link title='Notifications' className="nav-link" to="/NotificationHistory" style={{ padding: '0px !important', margin: 0, minWidth: '65%', minHeight: '80%', border: '2px solid white', borderRadius: 40, alignItems: 'center', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                 <img src="images/header/NotificationBell.png" alt="Notification Icon" width={'26px'} />
                             </Link>
                         </li>
-                        <li className="nav-item headerLink" style={{ backgroundColor: '#45473A', margin: '4px 3px' }}>
+                        <li className="nav-item headerLink" style={{ backgroundColor: '#45473A', margin: '4px 3px' }} onClick={() => { routeChange('/Help') }}>
                             <Link title='Help' className="nav-link" to="/Help" style={{ padding: '0px !important', margin: '0px 13px', minWidth: '65%', minHeight: '80%', outline: '2px solid white', borderRadius: 27.5, alignItems: 'center', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                 <img src="images/header/Help.png" alt="Settings Icon" width={'15px'} />
                             </Link>
                         </li>
-                        <li className="nav-item headerLink" style={{ backgroundColor: '#45473A', margin: '4px 3px' }}>
+                        <li className="nav-item headerLink" style={{ backgroundColor: '#45473A', margin: '4px 3px' }} onClick={() => { routeChange('/Setting') }}>
                             <Link title="Settings" className="nav-link" to="/Setting" style={{ padding: '0px !important', margin: '0px 13px', minWidth: '68%', minHeight: '80%', outline: '2px solid white', borderRadius: 27.5, alignItems: 'center', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                 <img src="images/header/Settings.png" alt="Settings Icon" width={'32.3px'} />
                             </Link>
                         </li>
                     </ul>
-
-                    {/* <form className="d-flex" role="search" onSubmit={(e) => { e.preventDefault() }}> */}
-                    {/* <div className="input-group">
-                            <input type="text" id="SearchBar" className="form-control" placeholder="" aria-label="Input group example" aria-describedby="basic-addon1" style={{ paddingLeft: '40px', marginRight: 5, borderRadius: 3 }} />
-                        </div> */}
-                    {/* <button className="btn headerLink mic" title="Mic Button" type="submit" style={{ backgroundColor: 'rgba(240, 100, 73)', color: "white", width: 50, marginRight: 70, display: 'flex', justifyContent: 'center', alignItems: 'center' }} onClick={() => record()}>
-                            <img src="images/header/Microphone.png" alt="" style={{ zoom: 0.7 }} />
-                        </button> */}
-                    {/* </form> */}
                 </div>
             </div>
         </nav >
