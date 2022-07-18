@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.b093e16d.css",
-    "main.js": "/static/js/main.e04e8def.js",
-    "static/js/787.e1f0395e.chunk.js": "/static/js/787.e1f0395e.chunk.js",
-    "static/media/Map.png": "/static/media/Map.33c2b0b3a0b9db6f1d91.png",
-    "static/media/Step-by-Step-Directions.png": "/static/media/Step-by-Step-Directions.07f0417c1409813b58e9.png",
-    "index.html": "/index.html",
-    "main.b093e16d.css.map": "/static/css/main.b093e16d.css.map",
-    "main.e04e8def.js.map": "/static/js/main.e04e8def.js.map",
-    "787.e1f0395e.chunk.js.map": "/static/js/787.e1f0395e.chunk.js.map"
+    "main.css": "/AutonomousSystemUserPortal/static/css/main.85a1e08e.css",
+    "main.js": "/AutonomousSystemUserPortal/static/js/main.bbac9f62.js",
+    "static/js/787.e1f0395e.chunk.js": "/AutonomousSystemUserPortal/static/js/787.e1f0395e.chunk.js",
+    "static/media/Map.png": "/AutonomousSystemUserPortal/static/media/Map.33c2b0b3a0b9db6f1d91.png",
+    "static/media/Step-by-Step-Directions.png": "/AutonomousSystemUserPortal/static/media/Step-by-Step-Directions.07f0417c1409813b58e9.png",
+    "index.html": "/AutonomousSystemUserPortal/index.html",
+    "main.85a1e08e.css.map": "/AutonomousSystemUserPortal/static/css/main.85a1e08e.css.map",
+    "main.bbac9f62.js.map": "/AutonomousSystemUserPortal/static/js/main.bbac9f62.js.map",
+    "787.e1f0395e.chunk.js.map": "/AutonomousSystemUserPortal/static/js/787.e1f0395e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b093e16d.css",
-    "static/js/main.e04e8def.js"
+    "static/css/main.85a1e08e.css",
+    "static/js/main.bbac9f62.js"
   ]
 }
