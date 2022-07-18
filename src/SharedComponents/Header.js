@@ -13,7 +13,7 @@ export default function Header() {
     const msg = new SpeechSynthesisUtterance()
 
     useEffect(() => {
-        if (msg.text != undefined && NotifToBeShown["Title"]) {
+        if (msg.text !== undefined && NotifToBeShown["Title"]) {
             msg.text = JSON.stringify(NotifToBeShown["Title"])
             window.speechSynthesis.speak(msg)
         }
@@ -27,7 +27,7 @@ export default function Header() {
                 let a = data.docs[0]._document.data.value;
                 a = a.mapValue.fields.NotifAdded.booleanValue;
 
-                if (a == true) {
+                if (a === true) {
                     let a2 = data.docs[0]._document.data.value;
                     a2 = a2.mapValue.fields.NotifHistory.stringValue;
                     a2 = (eval(a2)).at(-1)

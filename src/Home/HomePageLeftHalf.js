@@ -19,7 +19,7 @@ export default function HomePageLeftHalf() {
         </div>
         <div className='MapVid'>
           <video style={{ width: '85%' }} autoPlay={true} muted={true}>
-            <source src="/Videos/Map1.mp4" type="video/mp4" autoPlay={true} />
+            <source src="Videos/Map1.mp4" type="video/mp4" autoPlay={true} />
           </video>
           {/* <audio src='/Audio/sample.mp3' loop='loop' autoPlay={true}/> */}
         </div>
