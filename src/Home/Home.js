@@ -14,7 +14,7 @@ export default function HomePage() {
       setrighthalf("Home")
     } else if (window.location.href.substring(window.location.href.lastIndexOf('#') + 1) === "Tutorial") {
       setrighthalf("Tutorial")
-    } else { }
+    } else { setrighthalf("Home") }
 
     if (righthalf === "Home") {
       document.title = "Home"

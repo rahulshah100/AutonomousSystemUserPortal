@@ -22,6 +22,8 @@ function App() {
     <Router>
       <Routes>
         <Route exact path='/AutonomousSystemUserPortal/' element={<Home />} />
+        <Route  path='' element={<Home />} />
+        <Route exact path='/AutonomousSystemUserPortal/Home' element={<Home />} />
         <Route exact path='/AutonomousSystemUserPortal/CameraView' element={<CameraView />} />
         <Route exact path='/AutonomousSystemUserPortal/Map' element={<Map />} />
         <Route exact path='/AutonomousSystemUserPortal/Chat' element={<Chat />} />
@@ -32,6 +34,7 @@ function App() {
         <Route exact path='/AutonomousSystemUserPortal/Setting/Accessibility/Item' element={<SettingSubItem />} />
         <Route exact path='/AutonomousSystemUserPortal/Controller' element={<Controller />} />
         <Route path='*' element={<PageNotFound />} />
+        <Route path='/*' element={<PageNotFound />} />
       </Routes>
     </Router>
   );

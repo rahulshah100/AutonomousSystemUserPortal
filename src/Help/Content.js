@@ -84,7 +84,7 @@ export default function Content() {
                         <span className='MonitoredItemText'>Braking system</span>
                     </li>
                 </ul>
-                <Link to="/CameraView" style={{ color: '#1570A6', position: 'absolute', display: 'flex', bottom: 50, textAlign: 'center', left: 100, textDecoration: 'none' }}>Check Camera Views</Link>
+                <Link to="/AutonomousSystemUserPortal/CameraView" style={{ color: '#1570A6', position: 'absolute', display: 'flex', bottom: 50, textAlign: 'center', left: 100, textDecoration: 'none' }}>Check Camera Views</Link>
             </div>
             <div className="vl"></div>
             <div className='FAQ'>
@@ -123,7 +123,7 @@ export default function Content() {
                         <div className='Answer closed'> You can click on the settings menu in the shape of a gear at the top of the screen.</div>
                     </li>
                 </ul>
-                <Link to="/Chat" style={{ color: '#1570A6', textAlign: 'left', textDecoration: 'none' }}>Click here For More Questions </Link>
+                <Link to="/AutonomousSystemUserPortal/Chat" style={{ color: '#1570A6', textAlign: 'left', textDecoration: 'none' }}>Click here For More Questions </Link>
             </div>
         </div>
     )

@@ -7,7 +7,7 @@ export default function Content() {
     let h = 550
     let y = 50;
     let x = window.top.outerWidth / 2 + window.top.screenX - (w / 2);
-    window.open('/Setting/Item', `Setting- ${SettingItem}`, `toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=${w}, height=${h}, top=${y}, left=${x}`)
+    window.open('/AutonomousSystemUserPortal/Setting/Item', `Setting- ${SettingItem}`, `toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=${w}, height=${h}, top=${y}, left=${x}`)
     localStorage.setItem('SettingItem', SettingItem)
   }
 
