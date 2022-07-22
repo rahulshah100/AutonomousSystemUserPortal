@@ -1,7 +1,7 @@
 import './App.css';
-import Home from './Home/Home';
-import CameraView from './CameraView/CameraView';
-import Map from './Map/Map';
+import Home from './Home/Home.js';
+import CameraView from './CameraView/CameraView.js';
+import Map from './Map/Map.js';
 import Chat from './Chat/Chat';
 import NotificationHistory from './NotificationHistory/NotificationHistory';
 import Help from './Help/Help';
@@ -21,19 +21,18 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route exact path='/AutonomousSystemUserPortal/' element={<Home />} />
+        <Route exact path='/' element={<Home />} />
         <Route exact path='/Home' element={<Home />} />
-        <Route exact path='/AutonomousSystemUserPortal/Home' element={<Home />} />
-        <Route exact path='/AutonomousSystemUserPortal/CameraView' element={<CameraView />} />
-        <Route exact path='/AutonomousSystemUserPortal/Map' element={<Map />} />
-        <Route exact path='/AutonomousSystemUserPortal/Chat' element={<Chat />} />
-        <Route exact path='/AutonomousSystemUserPortal/NotificationHistory' element={<NotificationHistory />} />
-        <Route exact path='/AutonomousSystemUserPortal/Help' element={<Help />} />
-        <Route exact path='/AutonomousSystemUserPortal/Setting' element={<Setting />} />
-        <Route exact path='/AutonomousSystemUserPortal/Setting/Item' element={<SettingItem />} />
-        <Route exact path='/AutonomousSystemUserPortal/Setting/Accessibility/Item' element={<SettingSubItem />} />
-        <Route exact path='/AutonomousSystemUserPortal/Controller' element={<Controller />} />
-        <Route path='*' element={<PageNotFound />} />        
+        <Route exact path='/CameraView' element={<CameraView />} />
+        <Route exact path='/Map' element={<Map />} />
+        <Route exact path='/Chat' element={<Chat />} />
+        <Route exact path='/NotificationHistory' element={<NotificationHistory />} />
+        <Route exact path='/Help' element={<Help />} />
+        <Route exact path='/Setting' element={<Setting />} />
+        <Route exact path='/Setting/Item' element={<SettingItem />} />
+        <Route exact path='/Setting/Accessibility/Item' element={<SettingSubItem />} />
+        <Route exact path='/Controller' element={<Controller />} />
+        <Route path='*' element={<PageNotFound />} />
       </Routes>
     </Router>
   );

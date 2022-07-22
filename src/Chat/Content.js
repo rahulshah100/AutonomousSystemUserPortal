@@ -154,7 +154,6 @@ export default function Content() {
 
   function AddAnimation(AnimationClassName, Element) {
     Element.className += ` ${AnimationClassName}`
-    console.log(AnimationClassName, Element)
   }
 
   function ScrollToBottom() {
@@ -166,7 +165,7 @@ export default function Content() {
     let amORpm = d.getHours() < 12 ? ' AM' : ' PM'
 
     let h
-    if (d.getHours() > 13) {
+    if (d.getHours() >= 13) {
       h = d.getHours() - 12
     }
     else {

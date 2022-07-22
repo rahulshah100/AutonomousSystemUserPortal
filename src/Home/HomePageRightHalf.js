@@ -9,14 +9,14 @@ export default function Header(props) {
         document.getElementsByClassName('MapVid')[0].style.border = 'none'
         document.getElementsByClassName('MapVidHeader')[0].style.border = 'none'
     })
-    return (
+    return (        
         <div className='item2'>
             <div className='TopBar'>
                 <div className='QuickAccess'>Quick Access</div>
                 <div className='SeeMore'>
                     <Link to='#' title='See More Options' style={{
                         textDecoration: 'none', color: 'rgb(255, 64, 0)'
-                    }}> See more </Link>
+                    }}> See more </Link>                    
                 </div>
             </div>
             <div className='Cards'>

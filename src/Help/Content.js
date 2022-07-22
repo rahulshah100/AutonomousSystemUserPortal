@@ -29,8 +29,15 @@ export default function Content() {
 
         // Showing the Vehicle Monitoring Items one by one
         let count = 1
-        let showMonitoredItems = setInterval(() => {
-            document.getElementsByClassName('MonitoredItem')[count].classList.remove("closed")
+        let showMonitoredItems = setInterval(() => {            
+            // try catch is used here as below statements of the setInterval kept on executing even if move to a different page. Hence, in case of statements in try block, when new page gets opened up while this setInterval was not cleared, then html of new page would not have any element with className MonitoredItem and that kept throwing errors.
+            try {
+                document.getElementsByClassName('MonitoredItem')[count].classList.remove("closed")
+            }
+            catch (error) {
+                clearInterval(showMonitoredItems);
+            }
+
             if (count === document.getElementsByClassName('MonitoredItem').length - 1) {
                 clearInterval(showMonitoredItems);
                 setTimeout(ChangeLoadingIconAsDone, 2000)
@@ -84,7 +91,7 @@ export default function Content() {
                         <span className='MonitoredItemText'>Braking system</span>
                     </li>
                 </ul>
-                <Link to="/AutonomousSystemUserPortal/CameraView" style={{ color: '#1570A6', position: 'absolute', display: 'flex', bottom: 50, textAlign: 'center', left: 100, textDecoration: 'none' }}>Check Camera Views</Link>
+                <Link to="/CameraView" style={{ color: '#1570A6', position: 'absolute', display: 'flex', bottom: 50, textAlign: 'center', left: 100, textDecoration: 'none' }}>Check Camera Views</Link>
             </div>
             <div className="vl"></div>
             <div className='FAQ'>
@@ -123,7 +130,7 @@ export default function Content() {
                         <div className='Answer closed'> You can click on the settings menu in the shape of a gear at the top of the screen.</div>
                     </li>
                 </ul>
-                <Link to="/AutonomousSystemUserPortal/Chat" style={{ color: '#1570A6', textAlign: 'left', textDecoration: 'none' }}>Click here For More Questions </Link>
+                <Link to="/Chat" style={{ color: '#1570A6', textAlign: 'left', textDecoration: 'none' }}>Click here For More Questions </Link>
             </div>
         </div>
     )

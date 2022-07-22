@@ -20,14 +20,14 @@ export default function HomePage() {
       document.title = "Home"
     } else if (righthalf === "Tutorial") {
       document.title = "Tutorial"
-    } else { }
+    }
   }, [righthalf])
 
   return (
     <div>
       <Header />
       <div className="containerHomePage" style={{ height: '40.2vw' }}>
-        {lefthalf == 1 && <HomePageLeftHalf />}
+        {lefthalf === 1 && <HomePageLeftHalf />}
         {righthalf === "Home" && <HomePageRightHalf data={setrighthalf} />}
         {righthalf === "Tutorial" && <Tutorial data={setrighthalf} />}
       </div>

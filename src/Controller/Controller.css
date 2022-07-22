@@ -23,3 +23,27 @@
 .controllerContainer .PointerElem{
     margin-top: 5px;
 }
+
+.controllerContainer ul{
+    list-style-type: none;
+    margin-left: -60px;
+}
+
+.controllerContainer .closed{
+    display: none;
+}
+
+.controllerContainer .MonitoredItemDoneOk{
+    zoom: 0.75;
+}
+
+.controllerContainer .MonitoredItemLoading{
+    zoom: 0.75;
+    margin-right: 8px;
+    margin-bottom: 5px;
+}
+
+.controllerContainer li{
+    display: flex;
+    align-items: center;
+}

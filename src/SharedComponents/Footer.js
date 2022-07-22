@@ -25,22 +25,22 @@ export default function Footer(props) {
       <div className="container-fluid" style={{ paddingLeft: '12.5%', paddingRight: '12.5%', paddingTop: '0.37%', paddingBottom: '0.70%' }}>
         <ul className="navbar-nav me-auto mb-2 mb-lg-0" style={{ display: 'grid', gridTemplateColumns: '10% 10% 10% 10%', gridColumnGap: '20%', minWidth: '100%', textAlign: 'center' }}>
           <li className="nav-item" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Link className="nav-link footerLink" to="/AutonomousSystemUserPortal/#Home" style={{ maxHeight: 45 }}>
+            <Link className="nav-link footerLink" to="/#Home" style={{ maxHeight: 45 }}>
               <img className="FooterImage" src='images/footer/homeIcon.png' alt='home' title='home' />
             </Link>
           </li>
           <li className="nav-item" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Link className="nav-link footerLink" to="/AutonomousSystemUserPortal/CameraView" style={{ maxHeight: 45 }}>
+            <Link className="nav-link footerLink" to="/CameraView" style={{ maxHeight: 45 }}>
               <img className="FooterImage" src='images/footer/eyeIcon.png' alt='camera view' title='camera view' />
             </Link>
           </li>
           <li className="nav-item" id="MapIcon" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Link className="nav-link footerLink" to="/AutonomousSystemUserPortal/Map" style={{ maxHeight: 45 }}>
+            <Link className="nav-link footerLink" to="/Map" style={{ maxHeight: 45 }}>
               <img className="FooterImage" src='images/footer/mapIcon.png' alt='map' title='map' />
             </Link>
           </li>
           <li className="nav-item" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Link className="nav-link footerLink" to="/AutonomousSystemUserPortal/Chat" style={{ maxHeight: 45 }}>
+            <Link className="nav-link footerLink" to="/Chat" style={{ maxHeight: 45 }}>
               <img className="FooterImage" src='images/footer/chatIcon.png' alt="Chat" title="chat" />
             </Link>
           </li>

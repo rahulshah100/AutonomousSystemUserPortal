@@ -22,7 +22,7 @@ export default function SettingItem() {
         let h = 550
         let y = 50
         let x = window.top.outerWidth / 2 + window.top.screenX - (w / 2);
-        window.open('/AutonomousSystemUserPortal/Setting/Accessibility/Item', `${SettingItem}- ${ClickedOn}`, `toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=${w}, height=${h}, top=${y}, left=${x}`)
+        window.open('/Setting/Accessibility/Item', `${SettingItem}- ${ClickedOn}`, `toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=${w}, height=${h}, top=${y}, left=${x}`)
         window.close()
         localStorage.setItem('ClickedOn', ClickedOn)
     }
