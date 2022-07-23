@@ -20,28 +20,28 @@ export default function Header(props) {
                 </div>
             </div>
             <div className='Cards'>
-                <Link to="#" className='Card' title="View Route" style={{ textDecoration: 'none', color: 'rgb(2, 91, 130)', marginTop: '0px' }}>
-                    <div className='CardIcon'><img src="images/Card1.png" alt="View Route" title='View Route' /></div>
+                <Link to="#" className='Card' title="View Route" style={{ textDecoration: 'none', color: '#F06449', marginTop: '0px' }}>
+                    <div className='CardIcon'><img src="images/Card1.png" alt="View Route" title='View Route' style={{zoom:1.5}}/></div>
                     <div className='CardText' style={{display:'flex', justifyContent:'center'}}>View Route</div>
                 </Link>
-                <Link to="#" className='Card' title="Change Destination" style={{ textDecoration: 'none', color: 'rgb(2, 91, 130)', marginTop: '0px' }}>
-                    <div className='CardIcon'><img src="images/Card2.png" alt="Change Destination" title='Change Destination' /></div>
+                <Link to="#" className='Card' title="Change Destination" style={{ textDecoration: 'none', color: '#F06449', marginTop: '0px' }}>
+                    <div className='CardIcon'><img src="images/Card2.png" alt="Change Destination" title='Change Destination' style={{zoom:1}}/></div>
                     <div className='CardText' style={{display:'flex', justifyContent:'center'}}>Change Destination</div>
                 </Link>
-                <Link to="#" className='Card' title="Payment Options" style={{ textDecoration: 'none', color: 'rgb(2, 91, 130)', marginTop: '0px' }}>
-                    <div className='CardIcon'><img src="images/Card3.png" alt="Payment Options" title='Payment Options' /></div>
+                <Link to="#" className='Card' title="Payment Options" style={{ textDecoration: 'none', color: '#F06449', marginTop: '0px' }}>
+                    <div className='CardIcon'><img src="images/Card3.png" alt="Payment Options" title='Payment Options' style={{zoom:1.5}}/></div>
                     <div className='CardText' style={{display:'flex', justifyContent:'center'}}>Payment Options</div>
                 </Link>
-                <Link to="#" className='Card' title="Display Settings" style={{ textDecoration: 'none', color: 'rgb(2, 91, 130)', marginTop: '0px' }}>
-                    <div className='CardIcon'><img src="images/Card4.png" alt="Display Settings" title='Display Settings' /></div>
+                <Link to="#" className='Card' title="Display Settings" style={{ textDecoration: 'none', color: '#F06449', marginTop: '0px' }}>
+                    <div className='CardIcon'><img src="images/Card4.png" alt="Display Settings" title='Display Settings' style={{zoom:1.5}}/></div>
                     <div className='CardText' style={{display:'flex', justifyContent:'center'}}>Display Settings</div>
                 </Link>
-                <Link to="#" className='Card' title="Audio Settings" style={{ textDecoration: 'none', color: 'rgb(2, 91, 130)', marginTop: '0px' }}>
-                    <div className='CardIcon'><img src="images/Card5.png" alt="Audio Settings" title='Audio Settings' /></div>
+                <Link to="#" className='Card' title="Audio Settings" style={{ textDecoration: 'none', color: '#F06449', marginTop: '0px' }}>
+                    <div className='CardIcon'><img src="images/Card5.png" alt="Audio Settings" title='Audio Settings' style={{zoom:1.5}}/></div>
                     <div className='CardText' style={{display:'flex', justifyContent:'center'}}>Audio Settings</div>
                 </Link>
-                <Link to="#Tutorial" className='Card' title="Tutorial Mode" style={{ textDecoration: 'none', color: 'rgb(2, 91, 130)', marginTop: '0px' }} onClick={() => { props.data("Tutorial") }}>
-                    <div className='CardIcon'><img src="images/Card6.png" alt="Tutorial Mode" title='Tutorial Mode' /></div>
+                <Link to="#Tutorial" className='Card' title="Tutorial Mode" style={{ textDecoration: 'none', color: '#F06449', marginTop: '0px' }} onClick={() => { props.data("Tutorial") }}>
+                    <div className='CardIcon'><img src="images/Card6.png" alt="Tutorial Mode" title='Tutorial Mode' style={{zoom:1.5}}/></div>
                     <div className='CardText' style={{display:'flex', justifyContent:'center'}}>Tutorial Mode</div>
                 </Link>
             </div>

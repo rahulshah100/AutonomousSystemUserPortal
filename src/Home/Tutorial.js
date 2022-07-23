@@ -66,11 +66,11 @@ export default function Content(props) {
 
             <div style={{ minHeight: '81%', border: '2px solid black', borderRadius: ' 10px', backgroundColor: 'white', paddingLeft: 10, position: 'relative', marginTop: '30px' }} className="alert">
                 <div>
-                    <img src="images/card6.png" alt="Tutorial Icon" style={{ zoom: 0.7, marginLeft: 10, marginTop: 10 }} />
-                    <h3 style={{ color: 'rgb(2,91,130)', verticalAlign: 'middle', lineHeight: '45px', fontWeight: 600, display: 'inline-block' }}>
+                    <img src="images/card6.png" alt="Tutorial Icon" style={{ zoom: 0.8, marginLeft: 10, marginRight: 10, marginTop: 10 }} />
+                    <h3 style={{ color: '#F06449', verticalAlign: 'middle', lineHeight: '25px', fontWeight: 600, display: 'inline-block', marginTop:14 }}>
                         Tutorial Mode
                     </h3>
-                    <hr style={{ backgroundColor: 'rgb(2,91,130)', color: 'rgb(2,91,130)', height: '3.5px' }} />
+                    <hr style={{ backgroundColor: 'rgb(255,91,10)', color: 'rgb(255,91,10)', height: '3.5px' }} />
                 </div>
 
 

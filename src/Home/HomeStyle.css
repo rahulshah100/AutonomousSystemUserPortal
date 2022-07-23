@@ -36,6 +36,7 @@
 }
 
 .containerHomePage .SeeMore {
+    margin-top:5px;
     float: right;
     font-size: 16px;
     color: rgb(255, 64, 0) !important;
@@ -61,8 +62,8 @@
     color: rgb(2, 91, 130);
     text-align: center;
     font-size: 23px;
-    padding-top: 5px;
-    padding-bottom: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     zoom: 1.13;
 }
 

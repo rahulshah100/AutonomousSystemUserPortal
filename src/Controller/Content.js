@@ -105,7 +105,7 @@ export default function Controller() {
         if (Criticality === 2) {
             Array.from(document.getElementsByClassName('PointerElem')).forEach((element) => {
                 if (element.value.length > 0) {
-                    PointerText += ` <div><span style="display:inline-flex; padding:10px; margin-left:-27px; margin-bottom:5px; color:white; height: 25px; text-align:center; justify-content: center; align-items: center; width: 25px; border-radius:50%; background:#5BC3EB;">${tempCounter}</span> ${element.value}</div>`
+                    PointerText += ` <div class="${element.value} ClickablePointers"><span style="display:inline-flex; padding:10px; margin-left:-27px; margin-bottom:5px; color:white; height: 25px; text-align:center; justify-content: center; align-items: center; width: 25px; border-radius:50%; background:#5BC3EB;">${tempCounter}</span> ${element.value}</div>`
                     element.value = null
                     tempCounter += 1
                 }

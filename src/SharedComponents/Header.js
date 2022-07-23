@@ -3,11 +3,15 @@ import { Link, useNavigate } from 'react-router-dom'
 import { db } from "../FireBaseConnection/FireBaseConnection"
 import { collection, doc, getDocs, updateDoc } from "firebase/firestore"
 import './HeaderStyle.css'
+import { click } from '@testing-library/user-event/dist/click'
 
 export default function Header() {
     // Fetching Data from Firebase
     const [NotifToBeShown, setNotifToBeShown] = useState([]);
     const NotifAdded_CollectionRef = collection(db, "Notifs");
+
+    // For when a new Page is loaded, if from previous page the notification was still announcing, that would be stopped.
+    window.speechSynthesis.cancel()
 
     // For Vocally Announcing the Notification. This function keeps updating as NotifToBeShown i.e. a New Notification to be shown is discovered.
     useEffect(() => {
@@ -106,22 +110,75 @@ export default function Header() {
             } else {
                 Array.from(document.getElementsByClassName('PointersContainer'))[counter - 1].innerHTML = ''
             }
+        })
+    }
 
-            // Responsible for Loading Pointers in the notifications where bulletins are to be shown as loading initially, and then Done.
-            if (theNotif.Criticality === 2) {
-                // Displaying Notification with Loading GIFs
-                if (theNotif.Title === "Vehicle self-checking") {                    
-                    DisplayLoadingPointer()
-                }
+
+    // Showing the Description as User Clicks on "Show more..." in the Notification.
+    function ShowMoreNotifInfo() {
+        document.getElementsByClassName('NotifShowMore')[0].classList += ' NotifHide';
+        document.getElementsByClassName('DescContainer')[0].classList.remove('NotifHide');
+        document.getElementsByClassName('PointersContainer')[0].classList.remove('NotifHide');
+
+        // Announces the Desciption
+        let DescAnnouncement = new SpeechSynthesisUtterance()
+        DescAnnouncement.text = JSON.stringify(NotifToBeShown.Desc)
+        DescAnnouncement.text = DescAnnouncement.text.replaceAll("\\n", " ")
+        window.speechSynthesis.speak(DescAnnouncement)
+
+        // Announces the Pointer in the Description
+        if (NotifToBeShown.Pointer) {
+            let PointerAnnouncement = new SpeechSynthesisUtterance()
+            PointerAnnouncement.text = JSON.stringify(NotifToBeShown.Pointer)
+            window.speechSynthesis.speak(PointerAnnouncement)
+        }
+
+        // Responsible for Loading Pointers in the notifications where bulletins are to be shown as loading initially, and then Done.
+        if (NotifToBeShown.Criticality === 2) {
+            // Displaying Notification with Loading GIFs
+            if (NotifToBeShown.Title === "Vehicle self-checking") {
+                DisplayLoadingPointer(Array.from(document.getElementsByClassName('PointersContainer'))[counter - 1])
             }
+        }
+
+        // Making All Pointers in displayed notification, as Clickable.
+        FollowupModal()
+    }
+
+    // Helper function. For opening Followup Notifications to main notifications.
+    function FollowupModal() {
+        Array.from(document.getElementsByClassName('ClickablePointers')).forEach((EachPointerItem) => {
+            EachPointerItem.addEventListener("click", () => {
+                EachPointerItem.classList.remove("ClickablePointers")                
+
+                let FollowupNotif_Message
+                if (EachPointerItem.className.toLowerCase() === "wait for emergency services to arrive.") {
+                    FollowupNotif_Message = 'Okay. Emergency services will arrive here in 6 minutes.'
+                } else if (EachPointerItem.className.toLowerCase() === "request a new vehicle.") {
+                    FollowupNotif_Message = 'Okay. A request has been sent for a new vehicle.'
+                } else if (EachPointerItem.className.toLowerCase() === "exit and travel to your final destination on own.") {
+                    FollowupNotif_Message = 'Okay. It may take you 5 to 10 minutes to arrive at your final destination on your own. The door will open soon.'
+                } else{ 
+                    FollowupNotif_Message = "Okay. Your request has been considered."
+                }
+
+                // Announcing Text of Followup Notification
+                window.speechSynthesis.cancel()
+                const FollowuoNotif_Message_Announce = new SpeechSynthesisUtterance()
+                FollowuoNotif_Message_Announce.text = JSON.stringify(FollowupNotif_Message)
+                window.speechSynthesis.speak(FollowuoNotif_Message_Announce)
+
+                document.getElementsByClassName('NotificationTitle')[0].innerHTML = FollowupNotif_Message
+                document.getElementsByClassName('DescContainer')[0].remove()
+                document.getElementsByClassName('PointersContainer')[0].remove()
+            })
         })
     }
 
     // Helper functions. Responsible for Loading Pointers in the notifications where bulletins are to be shown as loading initially, and then Done.
-    function DisplayLoadingPointer() {
-        console.log(document.getElementsByClassName('PointersCointainer'))
-        Array.from(document.getElementsByClassName('PointersCointainer'))[counter - 1].innerHTML = `
-                <ul>
+    function DisplayLoadingPointer(thePointerHolderElem) {
+        thePointerHolderElem.innerHTML = `
+                <ul id="Loaderul">
                     <li class='MonitoredItem'>
                         <span class="MonitoredItemLoading spinner-border text-warning" role="status"></span>                                
                         <span class='MonitoredItemDone closed'> <img src="images/InspectionGreenTick.png" alt="GreenTickIcon" title="Done." /> </span>
@@ -195,26 +252,9 @@ export default function Header() {
             elem.remove()
             document.getElementsByClassName('MonitoredItemDone')[count2].classList = "MonitoredItemDoneOk"
         })
-    }
-
-    // Showing the Description as User Clicks on "Show more..." in the Notification.
-    function ShowMoreNotifInfo() {
-        document.getElementsByClassName('NotifShowMore')[0].classList += ' NotifHide';
-        document.getElementsByClassName('DescContainer')[0].classList.remove('NotifHide');
-        document.getElementsByClassName('PointersContainer')[0].classList.remove('NotifHide');
-
-        // Announces the Desciption
-        let DescAnnouncement = new SpeechSynthesisUtterance()
-        DescAnnouncement.text = JSON.stringify(NotifToBeShown.Desc)
-        DescAnnouncement.text = DescAnnouncement.text.replaceAll("\\n", " ")
-        window.speechSynthesis.speak(DescAnnouncement)
-
-        // Announces the Pointer in the Description
-        if (NotifToBeShown.Pointer) {
-            let PointerAnnouncement = new SpeechSynthesisUtterance()
-            PointerAnnouncement.text = JSON.stringify(NotifToBeShown.Pointer)
-            window.speechSynthesis.speak(PointerAnnouncement)
-        }
+        const Donemsg = new SpeechSynthesisUtterance()
+        Donemsg.text = JSON.stringify("Vehicle Status is Fine")
+        window.speechSynthesis.speak(Donemsg)
     }
 
 
