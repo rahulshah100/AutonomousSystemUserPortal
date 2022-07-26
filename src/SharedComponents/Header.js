@@ -149,7 +149,7 @@ export default function Header() {
     function FollowupModal() {
         Array.from(document.getElementsByClassName('ClickablePointers')).forEach((EachPointerItem) => {
             EachPointerItem.addEventListener("click", () => {
-                EachPointerItem.classList.remove("ClickablePointers")                
+                EachPointerItem.classList.remove("ClickablePointers")
 
                 let FollowupNotif_Message
                 if (EachPointerItem.className.toLowerCase() === "wait for emergency services to arrive.") {
@@ -158,7 +158,7 @@ export default function Header() {
                     FollowupNotif_Message = 'Okay. A request has been sent for a new vehicle.'
                 } else if (EachPointerItem.className.toLowerCase() === "exit and travel to your final destination on own.") {
                     FollowupNotif_Message = 'Okay. It may take you 5 to 10 minutes to arrive at your final destination on your own. The door will open soon.'
-                } else{ 
+                } else {
                     FollowupNotif_Message = "Okay. Your request has been considered."
                 }
 

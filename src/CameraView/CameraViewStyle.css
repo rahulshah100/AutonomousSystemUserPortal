@@ -25,7 +25,12 @@
     vertical-align: middle;
     padding: 14px;
     border-radius: 20px;
-    margin-bottom: 10%;
+    margin-bottom: 10%;    
+    transition: all 0.2s ease-in-out;
+}
+
+.containerCam .item2 img{
+    transition: opacity 1s ease-in-out;
 }
 
 .containerCam .Viewbtn:hover {
@@ -37,11 +42,11 @@
     background-color: rgb(240, 100, 73);
 }
 
-.containerCam .activeView a{
+.containerCam .activeView a {
     color: black !important;
 }
 
-.containerCam .activeView{
+.containerCam .activeView {
     background-color: transparent !important;
 }
 
@@ -51,7 +56,12 @@
     height: 100%;
 }
 
-.containerCam .CamImage{
+.containerCam .CamImage {
     height: 100%;
     width: 100%;
+}
+
+.containerCam .item2{
+    display: flex;
+    align-items: center;
 }

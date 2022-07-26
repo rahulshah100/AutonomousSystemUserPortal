@@ -74,8 +74,8 @@ export default function Content() {
           <h4> Need help? </h4>
 
           <div title="Change Destination" className="alert" style={{ backgroundColor: 'white', border: '2px solid rgba(32, 110, 144)', padding: '10px', borderRadius: '12px' }}>
-            <span style={{ paddingTop: '10%', marginLeft: '5px', minWidth: 55, minHeight: 55, borderRadius: 27.5, border: '2px solid rgb(2,91,130)', backgroundColor: 'rgb(247,247,249)', textAlign: 'center', verticalAlign: 'middle' }}>
-              <img src="images/Polyline.png" alt="notificationIcon" style={{ zoom: 1.12 }} />
+            <span style={{ paddingTop: '10%', marginLeft: '5px', minWidth: 55, minHeight: 55, borderRadius: 27.5, border: '2px solid #F06449', backgroundColor: 'rgb(247,247,249)', textAlign: 'center', verticalAlign: 'middle' }}>
+              <img src="images/Polyline.png" alt="notificationIcon" style={{ zoom: 0.5 }} />
             </span>
             <h5 style={{ fontSize: 19, color: '#F06449', textAlign: 'center', verticalAlign: 'middle', fontWeight: 600, lineHeight: '46px', paddingTop: '2px' }}>
               Change Destination
@@ -83,7 +83,7 @@ export default function Content() {
           </div>
 
           <div title="Vehicle Monitor" className="alert" style={{ backgroundColor: 'white', border: '2px solid rgba(32, 110, 144)', padding: '10px', borderRadius: '12px' }}>
-            <span style={{ paddingTop: '10%', marginLeft: '5px', minWidth: 55, minHeight: 55, borderRadius: 27.5, border: '2px solid rgb(2,91,130)', backgroundColor: 'rgb(247,247,249)', textAlign: 'center', verticalAlign: 'middle' }}>
+            <span style={{ paddingTop: '10%', marginLeft: '5px', minWidth: 55, minHeight: 55, borderRadius: 27.5, border: '2px solid #F06449', backgroundColor: 'rgb(247,247,249)', textAlign: 'center', verticalAlign: 'middle' }}>
               <img src="images/clip.png" alt="notificationIcon" style={{ zoom: 1.12 }} />
             </span>
             <h5 style={{ fontSize: 19, color: '#F06449', textAlign: 'center', verticalAlign: 'middle', fontWeight: 'bold', lineHeight: '45px', paddingTop: '2px' }}>
@@ -92,7 +92,7 @@ export default function Content() {
           </div>
 
           <div title="Change Laguage" className="alert" style={{ backgroundColor: 'white', border: '2px solid rgba(32, 110, 144)', padding: '10px', borderRadius: '12px' }}>
-            <span style={{ paddingTop: '17%', marginLeft: '5px', minWidth: 55, minHeight: 55, borderRadius: 27.5, border: '2px solid rgb(2,91,130)', backgroundColor: 'rgb(247,247,249)', textAlign: 'center', verticalAlign: 'middle' }}>
+            <span style={{ paddingTop: '17%', marginLeft: '5px', minWidth: 55, minHeight: 55, borderRadius: 27.5, border: '2px solid #F06449', backgroundColor: 'rgb(247,247,249)', textAlign: 'center', verticalAlign: 'middle' }}>
               <img src="images/clarity_language-line.png" alt="notificationIcon" style={{ zoom: 1.12 }} />
             </span>
             <h5 style={{fontSize: 19, color: '#F06449', textAlign: 'center', verticalAlign: 'middle', fontWeight: 'bold', lineHeight: '48px' }}>

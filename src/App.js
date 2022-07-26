@@ -18,12 +18,22 @@ import {
 } from "react-router-dom";
 
 function App() {
+  // Variable used for marking the time when site is loaded. This variable is further used for keeping videos ongoing and in sync. Or else, only when you're on that page, the video would keep playing and as we go and come from any other page of this site onto the page where a video is there, then the video would start playing again from begining. 
+  let siteStartedAt = new Date();
+
+  // keep playing an audio in the background.
+  let count = 0
+  let audio = new Audio('audio/Trip1.mp3')
+  audio.volume=0.2
+  // audio.loop=true
+  // audio.play()
+
   return (
     <Router>
       <Routes>
-        <Route exact path='/' element={<Home />} />
-        <Route exact path='/Home' element={<Home />} />
-        <Route exact path='/CameraView' element={<CameraView />} />
+        <Route exact path='/' element={<Home siteStartedAt={siteStartedAt} />} />
+        <Route exact path='/Home' element={<Home siteStartedAt={siteStartedAt} />} />
+        <Route exact path='/CameraView' element={<CameraView siteStartedAt={siteStartedAt}/>} />
         <Route exact path='/Map' element={<Map />} />
         <Route exact path='/Chat' element={<Chat />} />
         <Route exact path='/NotificationHistory' element={<NotificationHistory />} />
@@ -31,8 +41,8 @@ function App() {
         <Route exact path='/Setting' element={<Setting />} />
         <Route exact path='/Setting/Item' element={<SettingItem />} />
         <Route exact path='/Setting/Accessibility/Item' element={<SettingSubItem />} />
-        <Route exact path='/Controller' element={<Controller />} />
-        <Route path='*' element={<PageNotFound />} />
+        <Route exact path='/Controller' element={<Controller audio={audio}/>} />
+        <Route path='*' element={<PageNotFound/>} />
       </Routes>
     </Router>
   );

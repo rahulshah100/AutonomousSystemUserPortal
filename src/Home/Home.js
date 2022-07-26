@@ -5,7 +5,7 @@ import HomePageRightHalf from './HomePageRightHalf'
 import Tutorial from './Tutorial'
 import Footer from '../SharedComponents/Footer'
 
-export default function HomePage() {
+export default function HomePage(props) {
   const [righthalf, setrighthalf] = useState("Home")
   const [lefthalf, setlefthalf] = useState(1)
 
@@ -27,7 +27,7 @@ export default function HomePage() {
     <div>
       <Header />
       <div className="containerHomePage" style={{ height: '40.2vw' }}>
-        {lefthalf === 1 && <HomePageLeftHalf />}
+        {lefthalf === 1 && <HomePageLeftHalf siteStartedAt={props.siteStartedAt}/>}
         {righthalf === "Home" && <HomePageRightHalf data={setrighthalf} />}
         {righthalf === "Tutorial" && <Tutorial data={setrighthalf} />}
       </div>
