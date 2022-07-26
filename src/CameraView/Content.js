@@ -9,11 +9,9 @@ export default function Content(props) {
 
     // To keep videos ongoing and in sync.
     useEffect(() => {
-        console.log("Got into set")
         let currentTime = new Date();
         let videoIsAt = (currentTime - props.siteStartedAt) / 1000
         document.getElementById("Vid").currentTime = videoIsAt
-        console.log('end')
     }, [currentVid])
 
     // To replace thumbnail Image with the map video as the video gets loaded.
@@ -88,10 +86,10 @@ export default function Content(props) {
                     </video>
                 </span>
                 <span className='RearImgVid' style={{display:'none', width:'100%'}}>
-                    <img class="CamImage" src="images/Rear.png" alt="CamImage" />
+                    <img className="CamImage" src="images/Rear.png" alt="CamImage" />
                 </span>
                 <span className='SideImgVid' style={{display:'none', width:'100%'}}>
-                    <img class="CamImage" src="images/Left.png" alt="CamImage" />
+                    <img className="CamImage" src="images/Left.png" alt="CamImage" />
                 </span>
             </div>
         </div>

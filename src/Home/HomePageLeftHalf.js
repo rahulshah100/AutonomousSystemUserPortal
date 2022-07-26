@@ -9,8 +9,8 @@ export default function HomePageLeftHalf(props) {
   // To keep videos ongoing and in sync.
   useEffect(() => {
     let currentTime = new Date();
-    let videoIsAt = (currentTime - props.siteStartedAt) /1000    
-    document.getElementById("MapVid").currentTime=videoIsAt
+    let videoIsAt = (currentTime - props.siteStartedAt) / 1000
+    document.getElementById("MapVid").currentTime = videoIsAt
   })
 
   // To replace thumbnail Image with the map video as the video gets loaded.
@@ -26,7 +26,7 @@ export default function HomePageLeftHalf(props) {
         </div>
         <div className='MapVid'>
           {/* till the video loads, we'll show a blurred out image as a thumbnail */}
-          <img src="images/HomePageMapThumbnail.png" alt="Thumbnail Image of Map" style={{ zoom: 0.8, display: isVideoLoaded ? 'none' : 'block' }} />
+          <img src="images/HomePageMapThumbnail.png" alt="Thumbnail Image of Map" style={{ zoom: 0.790, display: isVideoLoaded ? 'none' : 'block' }} />
           <video style={{ width: '85%' }} autoPlay={true} muted={true} onLoadedData={onLoadedData} id="MapVid">
             <source src="Videos/Map1.mp4" type="video/mp4" autoPlay={true} />
           </video>

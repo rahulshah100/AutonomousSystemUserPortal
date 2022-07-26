@@ -10,6 +10,7 @@ export default function HomePage(props) {
   const [lefthalf, setlefthalf] = useState(1)
 
   useEffect(() => {
+    // Deciding to show RightHalf as home page's right half or to display is as tutorials page.
     if (window.location.href.substring(window.location.href.lastIndexOf('#') + 1) === "Home") {
       setrighthalf("Home")
     } else if (window.location.href.substring(window.location.href.lastIndexOf('#') + 1) === "Tutorial") {
@@ -23,11 +24,12 @@ export default function HomePage(props) {
     }
   }, [righthalf])
 
+
   return (
     <div>
       <Header />
       <div className="containerHomePage" style={{ height: '40.2vw' }}>
-        {lefthalf === 1 && <HomePageLeftHalf siteStartedAt={props.siteStartedAt}/>}
+        {lefthalf === 1 && <HomePageLeftHalf siteStartedAt={props.siteStartedAt} />}
         {righthalf === "Home" && <HomePageRightHalf data={setrighthalf} />}
         {righthalf === "Tutorial" && <Tutorial data={setrighthalf} />}
       </div>
